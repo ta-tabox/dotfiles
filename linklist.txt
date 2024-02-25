@@ -11,3 +11,6 @@ lazyvim      ${HOME}/.config/nvim
 
 # git
 .gitconfig.d      ${HOME}/.gitconfig.d
+
+# zsh
+.zsh.d      ${HOME}/.zsh.d
