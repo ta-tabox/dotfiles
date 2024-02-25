@@ -10,6 +10,7 @@
 	adu = add -u
 	adup = add -u -p
 	com = commit
+    comm = commit -m
 	mg = merge --no-ff
 	mgff = merge --ff
 	cp = cherry-pick
