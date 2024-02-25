@@ -34,3 +34,11 @@ if [ -d $ZSHHOME -a -r $ZSHHOME -a \
     done
 fi
 ```
+
+## Obsidian
+
+iCloudにファイルがある場合は適宜手動でリンクを作成
+
+```sh
+ln -fsn ~/dotfiles/.obsidian.vimrc ~/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/Brain/.obsidian.vimrc
+```
