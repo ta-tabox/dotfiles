@@ -1,0 +1,11 @@
+# 設定ファイルのリンクリスト
+# ターゲット(dotfiles内のパス)  リンクのパス
+# 以降はコメントとして無視
+
+# vim
+# .vimrc      ${HOME}/.vimrc
+
+# neovim
+lazyvim      ${HOME}/.config/nvim
+# nvim         ${HOME}/.config/nvim
+
