@@ -45,6 +45,10 @@ keymap("i", "<C-e>", "<Esc>$a", opts("Move to the first of line"))
 -- Visual --
 
 -- Command --
+-- vim.cmd([[
+--     cnoremap <expr> <C-K> wildmenumode() ? '<C-P>' : '<Up>'
+--     cnoremap <expr> <C-J> wildmenumode() ? '<C-N>' : '<Down>'
+-- ]])
 
 -- General --
 -- ; :を入れ替える
