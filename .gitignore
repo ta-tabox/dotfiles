@@ -1,0 +1,19 @@
+.ssh
+.aws
+
+# 履歴、キャッシュ
+.bash_history
+.viminfo
+
+# zsh
+dotfiles/zsh/.zsh.d/.zcompcache/
+dotfiles/zsh/.zsh.d/.zcompdump
+dotfiles/zsh/.zsh.d/.zsh_history
+dotfiles/zsh/.zsh.d/.zsh_sessions
+
+# macOS
+.DS_Store
+
+# local settings
+*.local.*
+*.local/
