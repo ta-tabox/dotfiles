@@ -49,4 +49,28 @@ ln -fsn ~/dotfiles/.obsidian.vimrc ~/Library/Mobile\ Documents/iCloud\~md\~obsid
 
 ```sh
 unlink ~/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/Brain/.obsidian.vimrc
+
+
+## NeoVim
+### LazyVim
+
+LazyVimを使用するにあたり以下のコマンドのインストールが必要
+- ripgrep
+- lazygit
+
+```sh
+$ brew install ripgrep
+$ brew install lazygit
+```
+
+### lazygitの英語化
+
+lazygitの設定ファイルに以下を追加する
+`lazygit --print-config-dir`
+
+`config.yml`
+
+```config
+gui:
+  language: 'en'
 ```
