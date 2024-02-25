@@ -6,8 +6,8 @@
 .vimrc      ${HOME}/.vimrc
 
 # neovim
-lazyvim     ${HOME}/.config/nvim
 # nvim      ${HOME}/.config/nvim
+lazyvim     ${HOME}/.config/nvim
 
 # git
 .gitconfig.d        ${HOME}/.gitconfig.d
@@ -23,3 +23,5 @@ lazyvim     ${HOME}/.config/nvim
 
 # starship
 starship.toml       ${HOME}/.config/starship.toml
+
+

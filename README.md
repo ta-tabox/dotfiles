@@ -3,10 +3,14 @@
 ## インストール
 
 適宜 `linklist.txt`の中身を修正し
-dotfilesディレクトリで実行
+`script/`ディレクトリ内で実行
 
 ```bash
-bash link.sh
+./link.sh
+
+or
+
+./unlink.sh
 ```
 
 ## Git
@@ -41,4 +45,8 @@ iCloudにファイルがある場合は適宜手動でリンクを作成
 
 ```sh
 ln -fsn ~/dotfiles/.obsidian.vimrc ~/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/Brain/.obsidian.vimrc
+```
+
+```sh
+unlink ~/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/Brain/.obsidian.vimrc
 ```
