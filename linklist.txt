@@ -9,3 +9,5 @@
 lazyvim      ${HOME}/.config/nvim
 # nvim         ${HOME}/.config/nvim
 
+# git
+.gitconfig.d      ${HOME}/.gitconfig.d

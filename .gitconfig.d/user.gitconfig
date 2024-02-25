@@ -1,0 +1,8 @@
+; デバイス間で共通にしたいセッティング
+
+[core]
+    editor = vim
+[push]
+	default = current
+    autoSetupRemote = true
+
