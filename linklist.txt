@@ -3,7 +3,7 @@
 # 以降はコメントとして無視
 
 # vim
-# .vimrc      ${HOME}/.vimrc
+.vimrc      ${HOME}/.vimrc
 
 # neovim
 lazyvim      ${HOME}/.config/nvim
