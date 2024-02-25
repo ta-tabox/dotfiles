@@ -6,11 +6,11 @@
 .vimrc      ${HOME}/.vimrc
 
 # neovim
-lazyvim      ${HOME}/.config/nvim
-# nvim         ${HOME}/.config/nvim
+lazyvim     ${HOME}/.config/nvim
+# nvim      ${HOME}/.config/nvim
 
 # git
-.gitconfig.d      ${HOME}/.gitconfig.d
+.gitconfig.d        ${HOME}/.gitconfig.d
 
 # zsh
 .zsh.d      ${HOME}/.zsh.d
@@ -19,4 +19,7 @@ lazyvim      ${HOME}/.config/nvim
 # icloud内のディレクトリに自動リングが作れなかったので、手動で作成すること
 # ln -fsn ~/dotfiles/.obsidian.vimrc ~/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/Brain/.obsidian.vimrc
 # 必要に応じて使用
-# .obsidian.vimrc         ${HOME}/Obsidian/Brain/.obsidian.vimrc
+# .obsidian.vimrc       ${HOME}/Obsidian/Brain/.obsidian.vimrc
+
+# starship
+starship.toml       ${HOME}/.config/starship.toml

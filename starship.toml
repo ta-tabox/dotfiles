@@ -1,0 +1,18 @@
+# https://starship.rs/ja-jp/config/
+
+# 空行追加
+add_newline = true
+
+# タイムアウト時間
+scan_timeout = 10
+command_timeout = 800
+
+# プロンプト
+[hostname]
+ssh_only = false
+
+[username]
+show_always = true
+
+[time]
+disabled = false
