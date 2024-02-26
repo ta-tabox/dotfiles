@@ -50,6 +50,14 @@ keymap("i", "<C-e>", "<Esc>$a", opts("Move to the first of line"))
 --     cnoremap <expr> <C-J> wildmenumode() ? '<C-N>' : '<Down>'
 -- ]])
 
+-- Terminal --
+keymap("t", "<C-h>", "<Bs>", default_opts)
+keymap("t", "<C-d>", "<Right><Bs>", default_opts)
+keymap("t", "<C-b>", "<Left>", default_opts)
+keymap("t", "<C-p>", "<Up>", default_opts)
+keymap("t", "<C-f>", "<Right>", default_opts)
+keymap("t", "<C-n>", "<Down>", default_opts)
+
 -- General --
 -- ; :を入れ替える
 keymap("n", ";", ":", default_opts)
