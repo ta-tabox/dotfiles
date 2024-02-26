@@ -12,10 +12,10 @@ autocmd("BufWritePre", {
   command = ":%s/\\s\\+$//e",
 })
 
--- Don't auto commenting new lines
-autocmd("BufEnter", {
+autocmd("FileType", {
+  group = augroup("turn_off_auto_commenting", {}),
   pattern = "*",
-  command = "set fo-=c fo-=r fo-=o",
+  command = [[setlocal fo-=cro]],
 })
 
 -- Restore cursor location when file is opened
