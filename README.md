@@ -47,7 +47,7 @@ iCloudにファイルがある場合は適宜手動でリンクを作成
 ln -fsn ~/dotfiles/.obsidian.vimrc ~/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/Brain/.obsidian.vimrc
 ```
 
-```sh
+````sh
 unlink ~/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/Brain/.obsidian.vimrc
 
 
@@ -58,10 +58,11 @@ LazyVimを使用するにあたり以下のコマンドのインストールが�
 - ripgrep
 - lazygit
 
+
 ```sh
 $ brew install ripgrep
 $ brew install lazygit
-```
+````
 
 ### lazygitの英語化
 
