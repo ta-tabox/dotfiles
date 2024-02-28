@@ -12,8 +12,8 @@
     "lazyvim.plugins.extras.lang.python-semshi",
     "lazyvim.plugins.extras.lang.typescript",
     "lazyvim.plugins.extras.lang.yaml",
+    "lazyvim.plugins.extras.ui.alpha",
     "lazyvim.plugins.extras.ui.edgy",
-    "lazyvim.plugins.extras.ui.mini-starter",
     "lazyvim.plugins.extras.util.project",
     "lazyvim.plugins.extras.vscode"
   ],
