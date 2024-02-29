@@ -7,6 +7,9 @@ local opt = vim.opt
 
 vim.scriptencodeint = "utf-8"
 
+-- シェルの設定
+opt.shell = "/bin/zsh"
+
 -- newvimのメッセージを英語にする
 opt.langmenu = "en_US.UTF-8"
 vim.api.nvim_exec("language message en_US.UTF-8", true)
