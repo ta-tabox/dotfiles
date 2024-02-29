@@ -17,6 +17,21 @@ HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
 
+# 同時に起動したzshの間でヒストリを共有する
+setopt share_history
+# 履歴を追加する
+setopt append_history
+# 即座に履歴を保存する
+setopt inc_append_history
+# 同じコマンドをヒストリに残さない
+setopt hist_ignore_all_dups
+# 直前と同じコマンドラインはヒストリに追加しない
+setopt hist_ignore_dups
+# スペースから始まるコマンド行はヒストリに残さない
+setopt hist_ignore_space
+# ヒストリに保存するときに余分なスペースを削除する
+setopt hist_reduce_blanks
+
 # 単語の区切り文字を指定する
 autoload -Uz select-word-style
 select-word-style default
@@ -62,14 +77,6 @@ setopt auto_cd
 setopt auto_pushd
 # 重複したディレクトリを追加しない
 setopt pushd_ignore_dups
-# 同時に起動したzshの間でヒストリを共有する
-setopt share_history
-# 同じコマンドをヒストリに残さない
-setopt hist_ignore_all_dups
-# スペースから始まるコマンド行はヒストリに残さない
-setopt hist_ignore_space
-# ヒストリに保存するときに余分なスペースを削除する
-setopt hist_reduce_blanks
 # 高機能なワイルドカード展開を使用する
 setopt extended_glob
 # 色を使用出来るようにする

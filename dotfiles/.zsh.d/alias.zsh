@@ -1,5 +1,4 @@
 # zshのalias
-
 alias la='ls -a'
 alias ll='ls -l'
 
@@ -8,6 +7,10 @@ alias cp='cp -i'
 alias mv='mv -i'
 
 alias mkdir='mkdir -p'
+
+# 設定ファイル
+alias zshconfig='vim ~/.zshrc'
+alias ohmyzsh='vim ~/.oh-my-zsh'
 
 # vim -> nvim
 alias vim='nvim'
