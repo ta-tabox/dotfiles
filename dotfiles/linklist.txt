@@ -24,4 +24,5 @@ lazyvim     ${HOME}/.config/nvim
 # starship
 starship.toml       ${HOME}/.config/starship.toml
 
-
+# tmux
+.tmux.conf          ${HOME}/.tmux.conf
