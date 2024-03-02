@@ -35,3 +35,11 @@ vim.cmd([[
         autocmd InsertLeave * :call system(g:imeoff)
     augroup END
 ]])
+
+-- Disable autoformat for all files
+autocmd({ "FileType" }, {
+  pattern = { "*" },
+  callback = function()
+    vim.b.autoformat = false
+  end,
+})
