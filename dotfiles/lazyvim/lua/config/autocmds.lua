@@ -28,13 +28,14 @@ autocmd({ "BufReadPost" }, {
 
 -- Insert -> Nomalの際にIMEを英字にする
 -- luaに書き直すのが難しすぎたので、luaにvimスクリプトを解釈させる方法で実装
-vim.cmd([[
-    let g:imeoff = 'osascript -e "tell application \"System Events\" to key code 102"'
-    augroup MyIMEGroup
-        autocmd!
-        autocmd InsertLeave * :call system(g:imeoff)
-    augroup END
-]])
+-- Nomalモードの切り替えにラグが発生するので使用しない。
+-- vim.cmd([[
+--     let g:imeoff = 'osascript -e "tell application \"System Events\" to key code 102"'
+--     augroup MyIMEGroup
+--         autocmd!
+--         autocmd InsertLeave * :call system(g:imeoff)
+--     augroup END
+-- ]])
 
 -- Disable autoformat for all files
 autocmd({ "FileType" }, {
