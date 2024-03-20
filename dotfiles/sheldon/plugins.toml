@@ -17,9 +17,6 @@ shell = "zsh"
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
 
-[plugins.z]
-github = "rupa/z"
-
 # For example:
 #
 # [plugins.base16]

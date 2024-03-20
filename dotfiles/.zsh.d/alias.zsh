@@ -10,7 +10,6 @@ alias mkdir='mkdir -p'
 
 # 設定ファイル
 alias zshconfig='vim ~/.zshrc'
-alias ohmyzsh='vim ~/.oh-my-zsh'
 
 # vim -> nvim
 alias vim='nvim'

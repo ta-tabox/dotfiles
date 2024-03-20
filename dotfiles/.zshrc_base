@@ -1,11 +1,4 @@
-########################################
-# Initialize
-# eval "$(starship init zsh)"
-# eval "$(anyenv init -)"
-# eval "$(sheldon source)"
-######################################
 # Loading for common settings
-## Loading about oh-my-zsh at first
 ZSHHOME="${HOME}/.zsh.d"
 
 if [ -d $ZSHHOME -a -r $ZSHHOME -a \

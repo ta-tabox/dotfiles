@@ -47,22 +47,23 @@ iCloudにファイルがある場合は適宜手動でリンクを作成
 ln -fsn ~/dotfiles/dotfiles/.obsidian.vimrc ~/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/Brain/.obsidian.vimrc
 ```
 
-````sh
+```sh
 unlink ~/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/Brain/.obsidian.vimrc
-
+```
 
 ## NeoVim
+
 ### LazyVim
 
 LazyVimを使用するにあたり以下のコマンドのインストールが必要
+
 - ripgrep
 - lazygit
 
-
 ```sh
-$ brew install ripgrep
-$ brew install lazygit
-````
+brew install ripgrep
+brew install lazygit
+```
 
 ### lazygitの英語化
 
@@ -77,9 +78,11 @@ gui:
 ```
 
 ## コマンド
+
 ターミナル上で使用する以下のコマンドをインストールする
+
 ```sh
-$ brew tmux
-$ brew sheldon
-$ brew fzf eza repgrep lazygit fd tree
+brew tmux
+brew sheldon
+brew fzf eza repgrep lazygit fd tree zoxide
 ```
