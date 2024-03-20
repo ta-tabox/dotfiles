@@ -77,12 +77,13 @@ gui:
   language: 'en'
 ```
 
-## コマンド
+## ツールのインストール
 
-ターミナル上で使用する以下のコマンドをインストールする
+ターミナル上で使用する以下のツールをインストールする
 
 ```sh
-brew tmux
-brew sheldon
-brew fzf eza repgrep lazygit fd tree zoxide
+brew install tmux sheldon starship anyenv neovim \
+        ripgrep lazygit fd \
+        fzf tree \
+        eza zoxide bat dust procs httpie
 ```
