@@ -1,11 +1,6 @@
 # License : MIT
 # http://mollifier.mit-license.org/
 ########################################
-# 初期化
-# zsh-autosuggestionsの読み込み
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-########################################
 ## 環境変数
 # 共通
 export LANG=ja_JP.UTF-8

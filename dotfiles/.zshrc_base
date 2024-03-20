@@ -1,5 +1,11 @@
+########################################
+# Initialize
+# eval "$(starship init zsh)"
+# eval "$(anyenv init -)"
+# eval "$(sheldon source)"
 ######################################
-# 共通設定ファイルの読み込み
+# Loading for common settings
+## Loading about oh-my-zsh at first
 ZSHHOME="${HOME}/.zsh.d"
 
 if [ -d $ZSHHOME -a -r $ZSHHOME -a \
@@ -10,8 +16,4 @@ if [ -d $ZSHHOME -a -r $ZSHHOME -a \
     done
 fi
 
-# local設定
-########################################
-# 初期化
-# eval "$(starship init zsh)"
-# eval "$(anyenv init -)"
+# Setting for local

@@ -75,3 +75,11 @@ lazygitの設定ファイルに以下を追加する
 gui:
   language: 'en'
 ```
+
+## コマンド
+ターミナル上で使用する以下のコマンドをインストールする
+```sh
+$ brew tmux
+$ brew sheldon
+$ brew fzf eza repgrep lazygit fd tree
+```
