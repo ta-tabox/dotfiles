@@ -87,3 +87,13 @@ brew install tmux sheldon starship anyenv neovim \
         fzf tree \
         eza zoxide bat dust procs httpie
 ```
+
+## Tmuxの設定
+
+### [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)のインストール
+
+```sh
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
+プラグインのインストール `Ctrl + g -> I`
