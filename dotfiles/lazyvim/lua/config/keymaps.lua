@@ -28,6 +28,7 @@ local keymap = vim.api.nvim_set_keymap
 
 -- yank
 keymap("n", "<Leader>p", '"0p', default_opts)
+keymap("n", "<Leader>P", '"0P', default_opts)
 
 -- ハイライトを消す
 keymap("n", "<ESC>", "<CMD>nohlsearch<CR><ESC>", opts("No highlight search"))
