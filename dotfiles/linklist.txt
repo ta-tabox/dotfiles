@@ -29,3 +29,7 @@ starship.toml       ${HOME}/.config/starship.toml
 
 # tmux
 .tmux.conf          ${HOME}/.tmux.conf
+
+# vscode
+.vscode/settings.json    ${HOME}/Library/Application\ Support/Code/User/settings.json
+.vscode/keybindings.json    ${HOME}/Library/Application\ Support/Code/User/keybindings.json

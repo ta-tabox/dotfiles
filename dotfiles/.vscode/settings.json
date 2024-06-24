@@ -1,0 +1,248 @@
+{
+  "workbench.startupEditor": "newUntitledFile",
+  "files.autoSave": "onFocusChange",
+  "editor.fontSize": 14,
+  "editor.fontFamily": "HackGen console NF",
+  "editor.renderWhitespace": "all",
+  "editor.wordWrap": "on",
+  "security.workspace.trust.untrustedFiles": "open",
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.defaultFormatter": "ms-python.black-formatter",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit",
+    "source.fixAll.eslint": "explicit"
+  },
+  "cSpell.userWords": [
+    "actionmailer",
+    "actionpack",
+    "actionview",
+    "activejob",
+    "activemodel",
+    "activerecord",
+    "activestorage",
+    "Fargate",
+    "neovim",
+    "rubocop",
+    "signin",
+    "signup",
+    "tailwindcss",
+    "tanaka",
+    "textlint",
+    "turbolinks",
+    "webpacker",
+    "zenn"
+  ],
+  // NOTE Vimの設定 -> neovimに変更、拡張機能の参考にする
+  // "vim.vimrc.enable": true,
+  // "vim.vimrc.path": "~.vimrc",
+  // "vim.easymotion": true,
+  // "vim.incsearch": true,
+  // "vim.useSystemClipboard": true,
+  // "vim.useCtrlKeys": true,
+  // "vim.hlsearch": true,
+  // "vim.leader": "<space>",
+  // "vim.visualstar": true,
+   // emmentの設定
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.includeLanguages": {
+    // "postcss": "css",
+    "css": "css",
+    "erb": "html",
+    "django-html": "html",
+  },
+  "emmet.syntaxProfiles": {
+    // "postcss": "css"
+  },
+  // rubyの設定
+  // "ruby.useBundler": true, // use the internal language server (see below)
+  // "ruby.useLanguageServer": true,
+  // "ruby.lint": {
+  //   "rubocop": {
+  //     "useBundler": true, // enable rubocop via bundler
+  //     "except": ["Metrics"] // because it is annoying that it puts wavy lines to all lines in those methods
+  //   },
+  //   "reek": {
+  //     "useBundler": true // enable reek via bundler
+  //   }
+  // },
+  // "ruby.intellisense": "rubyLocate",
+  // "ruby.format": "rubocop", // use rubocop for formatting
+
+  // // ruby solargraphの設定
+  // // コードナビゲーションの機能を有効にする
+  // "solargraph.definitions": true,
+  // // コード診断(lint)を有効にする設定 .solargraph.yml で reporters に設定した tool が使用
+  // "solargraph.diagnostics": true,
+  // // コードの自動修正を有効にする設定
+  // "solargraph.formatting": true,
+  // // erbのフォーマッターを設定する
+  // // "[erb]": {
+  // //   "editor.defaultFormatter": "aliariff.vscode-erb-beautify"
+  // // },
+  // // rubyのフォーマッターを設定する
+  // // "[ruby]": {
+  // //   "editor.defaultFormatter": "rebornix.ruby"
+  // // },
+
+  //   tailwindcssの設定
+  "tailwindCSS.includeLanguages": {
+    "html": "html",
+    "css": "css",
+    "plaintext": "html",
+    "erb": "html"
+  },
+  "tailwindCSS.validate": false,
+  "tailwindCSS.experimental.classRegex": ["class:\\s*\"([^\"]*)\""],
+  "tailwindCSS.emmetCompletions": true,
+  "editor.suggestSelection": "first",
+  // 拡張子をどのファイルとして開くか
+  "files.associations": {
+    "*.css": "css",
+    "*.jbuilder": "ruby",
+    "*.vim": "lua"
+  },
+
+
+  // HTML CSS Suportの設定
+  "css.enabledLanguages": ["html", "css", "erb"],
+  "html-css-class-completion.enableEmmetSupport": true,
+
+  // ファイルフォーマット
+  // ファイルの保存時に最終行以降の新しい行をトリミング
+  "files.trimFinalNewlines": true,
+  // ファイルの保存時に最新の行を末尾に追加
+  "files.insertFinalNewline": true,
+  // 末尾の空白をトリミング
+  "files.trimTrailingWhitespace": true,
+  // ファイル保存時に自動フォーマット
+  "editor.formatOnSave": true,
+
+
+  // "[typescriptreact]": {
+  //   "editor.formatOnSave": true,
+  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "html.format.templating": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+
+  "files.autoGuessEncoding": true,
+  "editor.accessibilitySupport": "off",
+  "editor.unicodeHighlight.allowedCharacters": {
+    "：": true
+  },
+  "editor.minimap.enabled": false,
+  "editor.bracketPairColorization.enabled": true,
+  "terminal.external.osxExec": "iTerm.app",
+
+  // todo treeの設定
+  "todo-tree.highlights.defaultHighlight": {
+    "gutterIcon": true
+  },
+  // todo-treeの検索対象からnode_modulesを外す
+  "todo-tree.filtering.excludeGlobs": ["**/node_modules/*"],
+  // 検索対象
+  "todo-tree.general.tags": [
+    "NOTE",
+    "CHANGED",
+    "TODO",
+    "REVIEW",
+    "HACK",
+    "WARNING",
+    "FIXME",
+    "XXX",
+    "OPTIMIZE"
+  ],
+
+  // 各タグのアイコンを変更
+  "todo-tree.highlights.customHighlight": {
+    "NOTE": {
+      "icon": "paintbrush",
+      "foreground": "#F8F3D4",
+      "iconColor": "#F8F3D4"
+    },
+    "CHANGED": {
+      "icon": "pin",
+      "foreground": "#F8F3D4",
+      "iconColor": "#F8F3D4"
+    },
+    "TODO": {
+      "icon": "tasklist",
+      "foreground": "#00B8A9",
+      "iconColor": "#00B8A9"
+    },
+    "REVIEW": {
+      "icon": "plus-circle",
+      "foreground": "#00B8A9",
+      "iconColor": "#00B8A9"
+    },
+    "HACK": {
+      "icon": "shield",
+      "foreground": "#FFDE7D",
+      "iconColor": "#FFDE7D"
+    },
+    "WARNING": {
+      "icon": "alert",
+      "foreground": "#FFDE7D",
+      "iconColor": "#FFDE7D"
+    },
+    "FIXME": {
+      "icon": "flame",
+      "foreground": "#F6416C",
+      "iconColor": "#F6416C"
+    },
+    "XXX": {
+      "icon": "zap",
+      "foreground": "#F6416C",
+      "iconColor": "#F6416C"
+    },
+    "OPTIMIZE": {
+      "icon": "circle-slash",
+      "foreground": "#F6416C",
+      "iconColor": "#F6416C"
+    }
+  },
+  "terminal.integrated.shellIntegration.enabled": true,
+  "terminal.integrated.shellIntegration.history": 500,
+  "explorer.confirmDragAndDrop": false,
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "explorer.confirmDelete": false,
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnType": true,
+    "editor.tabSize": 4,
+  },
+  // マークダウンリントの設定
+  // "markdownlint.config": {
+  //   "default": true,
+  //   "MD033": false
+  // }
+  "workbench.colorTheme": "Dracula Soft",
+  "circleci.notifications.areActive": "yes",
+  "circleci.hostUrl": "",
+  "python.terminal.executeInFileDir": true,
+  "terminal.integrated.fontFamily": "Hack Nerd Font Mono",
+  "black-formatter.args": [
+    "--line-length=79"
+  ],
+  "flake8.severity": {
+    "E": "Warning",
+    "F": "Warning"
+  },
+  "isort.check": true,
+  "editor.suggestOnTriggerCharacters": false,
+  "editor.tabSize": 2,
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "vscode-neovim.compositeKeys": {
+    "jk": {
+        "command": "vscode-neovim.escape"
+    }
+  }
+  // "editor.occurrencesHighlight": "off",
+}

@@ -16,5 +16,5 @@ __remove_linklist_comment "$linklist" | while read target link; do
 	link=$(eval echo "${link}")
 	# シンボリックリンクを作成
 	__mkdir $(dirname ${link})
-	__ln ${target} ${link}
+	__ln "${target}" "${link}"
 done
