@@ -1,47 +1,66 @@
 [
   {
+    "key": "ctrl+1",
+    "command": "workbench.action.openEditorAtIndex1"
+  },
+  {
+    "key": "ctrl+1",
+    "command": "-workbench.action.openEditorAtIndex1"
+  },
+  {
+    "key": "cmd+k l",
+    "command": "workbench.action.toggleLockedScrolling"
+  },
+  {
+    "key": "shift+cmd+8",
+    "command": "editor.action.revealDefinition",
+    "when": "editorHasDefinitionProvider && editorTextFocus"
+  },
+  {
+    "key": "f12",
+    "command": "-editor.action.revealDefinition",
+    "when": "editorHasDefinitionProvider && editorTextFocus"
+  },
+  {
+    "key": "cmd+k cmd+g",
+    "command": "git-graph.view"
+  },
+  {
+    "key": "ctrl+shift+g",
+    "command": "-workbench.view.scm",
+    "when": "workbench.scm.active && !gitlens:disabled && config.gitlens.keymap == 'chorded'"
+  },
+  {
+    "key": "cmd+k g",
+    "command": "workbench.view.scm",
+    "when": "workbench.scm.active"
+  },
+  {
+    "key": "ctrl+shift+g",
+    "command": "-workbench.view.scm",
+    "when": "workbench.scm.active"
+  },
+  {
+    "key": "ctrl+w s",
+    "command": "-workbench.action.splitEditorDown",
+    "when": "!editorTextFocus && !terminalFocus && neovim.mode != 'cmdline'"
+  },
+  {
+    "key": "ctrl+w v",
+    "command": "-workbench.action.splitEditorRight",
+    "when": "!editorTextFocus && !terminalFocus && neovim.mode != 'cmdline'"
+  },
+  {
+    "key": "cmd+k cmd+\\",
+    "command": "-workbench.action.splitEditorUp"
+  },
+  {
+    "key": "cmd+k cmd+\\",
+    "command": "-workbench.action.splitEditorLeft"
+  },
+  {
     "key": "cmd+k \\",
     "command": "workbench.action.splitEditorRight"
-  },
-  {
-    "key": "cmd+m cmd+right",
-    "command": "workbench.action.splitEditorToRightGroup"
-  },
-  {
-    "key": "shift+ctrl+h",
-    "command": "workbench.action.previousEditor"
-  },
-  {
-    "key": "shift+ctrl+l",
-    "command": "workbench.action.nextEditor"
-  },
-  {
-    "key": "ctrl+j",
-    "command": "selectNextSuggestion",
-    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
-  },
-  {
-    "key": "ctrl+k",
-    "command": "selectPrevSuggestion",
-    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
-  },
-  {
-    "key": "ctrl+j",
-    "command": "workbench.action.quickOpenSelectNext",
-    "when": "inQuickOpen"
-  },
-  {
-    "key": "ctrl+k",
-    "command": "workbench.action.quickOpenSelectPrevious",
-    "when": "inQuickOpen "
-  },
-  {
-    "key": "cmd+k space",
-    "command": "workbench.action.experimental.quickTextSearch"
-  },
-  {
-    "key": "cmd+k cmd+p",
-    "command": "python.execInTerminal"
   },
   {
     "key": "cmd+k cmd+\\",
@@ -54,5 +73,25 @@
   {
     "key": "cmd+k cmd+\\",
     "command": "-workbench.action.splitEditorDown"
+  },
+  {
+    "key": "cmd+k a",
+    "command": "remote-containers.attachToRunningContainer"
+  },
+  {
+    "key": "cmd+k space",
+    "command": "workbench.action.quickTextSearch"
+  },
+  {
+    "key": "cmd+k cmd+t",
+    "command": "-workbench.action.selectTheme"
+  },
+  {
+    "key": "cmd+k cmd+t",
+    "command": "workbench.action.toggleMaximizedPanel"
+  },
+  {
+    "key": "cmd+k cmd+\\",
+    "command": "-workbench.action.splitEditorOrthogonal"
   }
 ]

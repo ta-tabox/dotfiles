@@ -1,248 +1,233 @@
 {
-  "workbench.startupEditor": "newUntitledFile",
-  "files.autoSave": "onFocusChange",
-  "editor.fontSize": 14,
+  "editor.accessibilitySupport": "off",
   "editor.fontFamily": "HackGen console NF",
+  "editor.fontSize": 14,
   "editor.renderWhitespace": "all",
+  "editor.tabSize": 2,
   "editor.wordWrap": "on",
-  "security.workspace.trust.untrustedFiles": "open",
-  "workbench.iconTheme": "material-icon-theme",
-  "editor.defaultFormatter": "ms-python.black-formatter",
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": "explicit",
-    "source.fixAll.eslint": "explicit"
+  "editor.inlayHints.enabled": "off",
+  "editor.guides.indentation": false,
+  "editor.guides.bracketPairs": false,
+  "editor.minimap.enabled": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.unicodeHighlight.allowedCharacters": {
+    "：": true
   },
-  "cSpell.userWords": [
-    "actionmailer",
-    "actionpack",
-    "actionview",
-    "activejob",
-    "activemodel",
-    "activerecord",
-    "activestorage",
-    "Fargate",
-    "neovim",
-    "rubocop",
-    "signin",
-    "signup",
-    "tailwindcss",
-    "tanaka",
-    "textlint",
-    "turbolinks",
-    "webpacker",
-    "zenn"
-  ],
-  // NOTE Vimの設定 -> neovimに変更、拡張機能の参考にする
-  // "vim.vimrc.enable": true,
-  // "vim.vimrc.path": "~.vimrc",
-  // "vim.easymotion": true,
-  // "vim.incsearch": true,
-  // "vim.useSystemClipboard": true,
-  // "vim.useCtrlKeys": true,
-  // "vim.hlsearch": true,
-  // "vim.leader": "<space>",
-  // "vim.visualstar": true,
-   // emmentの設定
-  "emmet.triggerExpansionOnTab": true,
-  "emmet.includeLanguages": {
-    // "postcss": "css",
-    "css": "css",
-    "erb": "html",
-    "django-html": "html",
-  },
-  "emmet.syntaxProfiles": {
-    // "postcss": "css"
-  },
-  // rubyの設定
-  // "ruby.useBundler": true, // use the internal language server (see below)
-  // "ruby.useLanguageServer": true,
-  // "ruby.lint": {
-  //   "rubocop": {
-  //     "useBundler": true, // enable rubocop via bundler
-  //     "except": ["Metrics"] // because it is annoying that it puts wavy lines to all lines in those methods
-  //   },
-  //   "reek": {
-  //     "useBundler": true // enable reek via bundler
-  //   }
+  "editor.bracketPairColorization.enabled": true,
+  "editor.linkedEditing": true,
+  "editor.largeFileOptimizations": false,
+  // "editor.codeActionsOnSave": {
+  //  "source.organizeImports": "explicit",
+  //   "source.fixAll.eslint": "explicit"
   // },
-  // "ruby.intellisense": "rubyLocate",
-  // "ruby.format": "rubocop", // use rubocop for formatting
-
-  // // ruby solargraphの設定
-  // // コードナビゲーションの機能を有効にする
-  // "solargraph.definitions": true,
-  // // コード診断(lint)を有効にする設定 .solargraph.yml で reporters に設定した tool が使用
-  // "solargraph.diagnostics": true,
-  // // コードの自動修正を有効にする設定
-  // "solargraph.formatting": true,
-  // // erbのフォーマッターを設定する
-  // // "[erb]": {
-  // //   "editor.defaultFormatter": "aliariff.vscode-erb-beautify"
-  // // },
-  // // rubyのフォーマッターを設定する
-  // // "[ruby]": {
-  // //   "editor.defaultFormatter": "rebornix.ruby"
-  // // },
-
-  //   tailwindcssの設定
-  "tailwindCSS.includeLanguages": {
-    "html": "html",
-    "css": "css",
-    "plaintext": "html",
-    "erb": "html"
+  "explorer.confirmDelete": false,
+  "terminal.integrated.enableImages": true,
+  "terminal.integrated.fontFamily": "HackGen console NF",
+  "terminal.external.osxExec": "iTerm",
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.shellIntegration.history": 500,
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1"
   },
-  "tailwindCSS.validate": false,
-  "tailwindCSS.experimental.classRegex": ["class:\\s*\"([^\"]*)\""],
-  "tailwindCSS.emmetCompletions": true,
-  "editor.suggestSelection": "first",
-  // 拡張子をどのファイルとして開くか
-  "files.associations": {
-    "*.css": "css",
-    "*.jbuilder": "ruby",
-    "*.vim": "lua"
+  "workbench.startupEditor": "none",
+  "workbench.colorTheme": "Dracula Soft",
+  "workbench.preferredDarkColorTheme": "Dracula Soft",
+  "workbench.preferredHighContrastColorTheme": "Dracula Soft",
+  "workbench.preferredHighContrastLightColorTheme": "Dracula Soft",
+  "workbench.colorCustomizations": {
+    "editor.lineHighlightBackground": "#1073cf2d",
+    "editor.lineHighlightBorder": "#9fced11f"
   },
-
-
-  // HTML CSS Suportの設定
-  "css.enabledLanguages": ["html", "css", "erb"],
-  "html-css-class-completion.enableEmmetSupport": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "diffEditor.wordWrap": "on",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "window.confirmSaveUntitledWorkspace": false,
 
   // ファイルフォーマット
+  "files.autoSave": "onFocusChange",
   // ファイルの保存時に最終行以降の新しい行をトリミング
-  "files.trimFinalNewlines": true,
+  // "files.trimFinalNewlines": true,
   // ファイルの保存時に最新の行を末尾に追加
-  "files.insertFinalNewline": true,
+  // "files.insertFinalNewline": true,
   // 末尾の空白をトリミング
-  "files.trimTrailingWhitespace": true,
-  // ファイル保存時に自動フォーマット
-  "editor.formatOnSave": true,
+  // "files.trimTrailingWhitespace": true,
+  "files.autoGuessEncoding": true,
+  "files.associations": {
+    "*.html": "html",
+    "*.py": "python"
+  },
 
+  // HTML
+  "html.format.templating": true,
+  // HTML CSS Suportの設定
+  "css.enabledLanguages": ["html", "css", "erb"],
+  // "html-css-class-completion.enableEmmetSupport": true,
 
+  // Python
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8",
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.tabSize": 4
+  },
+  "python.terminal.executeInFileDir": true,
+  // "blockman.n04ColorComboPreset": "Classic Dark Oppo (Gradients)",
+  // "blockman.n02EachCharFrameWidth": 10,
+  // "blockman.n04Sub02ColorComboPresetForLightTheme": "none",
+  // "black-formatter.args": [
+  //   "--line-length=79"
+  // ],
+  // "flake8.severity": {
+  //   "E": "Warning",
+  //   "F": "Warning"
+  // }
+
+  // TypeScript
   // "[typescriptreact]": {
   //   "editor.formatOnSave": true,
   //   "editor.defaultFormatter": "esbenp.prettier-vscode"
   // },
+  // "typescript.preferences.importModuleSpecifier": "non-relative",
+  // "typescript.updateImportsOnFileMove.enabled": "always",
+
+  // JavaScript
+  // "javascript.updateImportsOnFileMove.enabled": "never",
+  "eslint.format.enable": true,
+  "eslint.rules.customizations": [
+  ],
+
+  // JSON
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+
+  // Docker
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
-  "html.format.templating": true,
-  "diffEditor.ignoreTrimWhitespace": false,
 
-  "files.autoGuessEncoding": true,
-  "editor.accessibilitySupport": "off",
-  "editor.unicodeHighlight.allowedCharacters": {
-    "：": true
-  },
-  "editor.minimap.enabled": false,
-  "editor.bracketPairColorization.enabled": true,
-  "terminal.external.osxExec": "iTerm.app",
+  // git
+  "git.autofetch": true,
+  "git.suggestSmartCommit": false,
 
-  // todo treeの設定
-  "todo-tree.highlights.defaultHighlight": {
-    "gutterIcon": true
+  // emmentの設定
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.includeLanguages": {
+    "css": "css",
+    "erb": "html",
+    "django-html": "html"
   },
+
+  //// Todo Treeの設定
   // todo-treeの検索対象からnode_modulesを外す
-  "todo-tree.filtering.excludeGlobs": ["**/node_modules/*"],
+  "todo-tree.filtering.excludeGlobs": ["**/node_modules/*/**", "**/swagger/*"],
   // 検索対象
   "todo-tree.general.tags": [
-    "NOTE",
-    "CHANGED",
-    "TODO",
-    "REVIEW",
     "HACK",
-    "WARNING",
     "FIXME",
+    "TODO",
     "XXX",
-    "OPTIMIZE"
+    "REVIEW",
+    "OPTIMIZE",
+    "CHANGED",
+    "NOTE",
+    "WARNING",
+    "QUESTION",
+    "TAG"
   ],
-
+  // ハイライトの色をDraculaテーマに合うように変更
+  // 目立つように行ごとハイライトするように変更
+  "todo-tree.highlights.defaultHighlight": {
+    "gutterIcon": true,
+    "foreground": "#FFFFFF",
+    "background": "#9580FF",
+    "type": "whole-line",
+    "iconColor": "#8AFF80",
+    "opacity": 15
+  },
   // 各タグのアイコンを変更
+  // FIXME,XXXなどのより目立たせたいタグの色を赤系に変更
   "todo-tree.highlights.customHighlight": {
-    "NOTE": {
-      "icon": "paintbrush",
-      "foreground": "#F8F3D4",
-      "iconColor": "#F8F3D4"
-    },
-    "CHANGED": {
-      "icon": "pin",
-      "foreground": "#F8F3D4",
-      "iconColor": "#F8F3D4"
-    },
-    "TODO": {
-      "icon": "tasklist",
-      "foreground": "#00B8A9",
-      "iconColor": "#00B8A9"
-    },
-    "REVIEW": {
-      "icon": "plus-circle",
-      "foreground": "#00B8A9",
-      "iconColor": "#00B8A9"
-    },
     "HACK": {
-      "icon": "shield",
-      "foreground": "#FFDE7D",
-      "iconColor": "#FFDE7D"
-    },
-    "WARNING": {
-      "icon": "alert",
-      "foreground": "#FFDE7D",
-      "iconColor": "#FFDE7D"
+      "icon": "shield"
     },
     "FIXME": {
       "icon": "flame",
-      "foreground": "#F6416C",
-      "iconColor": "#F6416C"
+      "background": "#FF5555",
+      "iconColor": "#FF5555"
+    },
+    "TODO": {
+      "icon": "tasklist"
     },
     "XXX": {
       "icon": "zap",
-      "foreground": "#F6416C",
-      "iconColor": "#F6416C"
+      "background": "#FF5555",
+      "iconColor": "#FF5555"
+    },
+    "REVIEW": {
+      "icon": "eye"
     },
     "OPTIMIZE": {
       "icon": "circle-slash",
-      "foreground": "#F6416C",
-      "iconColor": "#F6416C"
+      "background": "#FF5555",
+      "iconColor": "#FF5555"
+    },
+    "CHANGED": {
+      "icon": "pin"
+    },
+    "NOTE": {
+      "icon": "paintbrush"
+    },
+    "WARNING": {
+      "icon": "alert",
+      "background": "#FF5555",
+      "iconColor": "#FF5555"
+    },
+    "QUESTION": {
+      "icon": "question"
+    },
+    "TAG": {
+      "icon": "tag"
     }
   },
-  "terminal.integrated.shellIntegration.enabled": true,
-  "terminal.integrated.shellIntegration.history": 500,
-  "explorer.confirmDragAndDrop": false,
-  "javascript.updateImportsOnFileMove.enabled": "never",
-  "explorer.confirmDelete": false,
-  "typescript.preferences.importModuleSpecifier": "non-relative",
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter",
-    "editor.formatOnType": true,
-    "editor.tabSize": 4,
-  },
-  // マークダウンリントの設定
-  // "markdownlint.config": {
-  //   "default": true,
-  //   "MD033": false
-  // }
-  "workbench.colorTheme": "Dracula Soft",
-  "circleci.notifications.areActive": "yes",
-  "circleci.hostUrl": "",
-  "python.terminal.executeInFileDir": true,
-  "terminal.integrated.fontFamily": "Hack Nerd Font Mono",
-  "black-formatter.args": [
-    "--line-length=79"
-  ],
-  "flake8.severity": {
-    "E": "Warning",
-    "F": "Warning"
-  },
-  "isort.check": true,
-  "editor.suggestOnTriggerCharacters": false,
-  "editor.tabSize": 2,
+
+  // neovim
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
   },
   "vscode-neovim.compositeKeys": {
     "jk": {
-        "command": "vscode-neovim.escape"
+      "command": "vscode-neovim.escape"
     }
-  }
-  // "editor.occurrencesHighlight": "off",
+  },
+
+  // gitlensのアバターがうるさいので非表示
+  "gitlens.views.commitDetails.avatars": false,
+  "gitlens.views.repositories.avatars": false,
+  "gitlens.views.fileHistory.avatars": false,
+  "gitlens.views.lineHistory.avatars": false,
+  "gitlens.views.branches.avatars": false,
+  "gitlens.views.remotes.avatars": false,
+  "gitlens.views.tags.avatars": false,
+  "gitlens.views.worktrees.avatars": false,
+  "gitlens.views.contributors.avatars": false,
+  "gitlens.views.searchAndCompare.avatars": false,
+  "gitlens.views.workspaces.avatars": false,
+  "gitlens.views.patchDetails.avatars": false,
+  "gitlens.graph.avatars": false,
+  "gitlens.gitCommands.avatars": false,
+  "gitlens.hovers.avatars": false,
+  "gitlens.blame.avatars": false,
+
+  "cSpell.userWords": [
+    "Clusterer",
+    "flatpickr",
+    "geohash",
+    "geopandas",
+    "goga",
+    "Uluru",
+    "vuetify",
+    "ZINDEX"
+  ]
 }
