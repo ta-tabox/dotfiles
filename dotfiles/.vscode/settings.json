@@ -47,11 +47,11 @@
   // ファイルフォーマット
   "files.autoSave": "onFocusChange",
   // ファイルの保存時に最終行以降の新しい行をトリミング
-  // "files.trimFinalNewlines": true,
+  "files.trimFinalNewlines": true,
   // ファイルの保存時に最新の行を末尾に追加
-  // "files.insertFinalNewline": true,
+  "files.insertFinalNewline": true,
   // 末尾の空白をトリミング
-  // "files.trimTrailingWhitespace": true,
+  "files.trimTrailingWhitespace": true,
   "files.autoGuessEncoding": true,
   "files.associations": {
     "*.html": "html",
@@ -66,22 +66,18 @@
 
   // Python
   "[python]": {
-    "editor.defaultFormatter": "ms-python.autopep8",
+    "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.formatOnSave": true,
     "editor.formatOnType": true,
     "editor.tabSize": 4
   },
   "python.terminal.executeInFileDir": true,
-  // "blockman.n04ColorComboPreset": "Classic Dark Oppo (Gradients)",
-  // "blockman.n02EachCharFrameWidth": 10,
-  // "blockman.n04Sub02ColorComboPresetForLightTheme": "none",
-  // "black-formatter.args": [
-  //   "--line-length=79"
-  // ],
-  // "flake8.severity": {
-  //   "E": "Warning",
-  //   "F": "Warning"
-  // }
+  "black-formatter.args": ["--line-length=79"],
+  "flake8.severity": {
+    "E": "Warning",
+    "F": "Warning"
+  },
+  "isort.check": true,
 
   // TypeScript
   // "[typescriptreact]": {
@@ -94,8 +90,7 @@
   // JavaScript
   // "javascript.updateImportsOnFileMove.enabled": "never",
   "eslint.format.enable": true,
-  "eslint.rules.customizations": [
-  ],
+  "eslint.rules.customizations": [],
 
   // JSON
   "[json]": {
