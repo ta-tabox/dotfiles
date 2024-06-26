@@ -27,7 +27,8 @@
   "terminal.external.osxExec": "iTerm",
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.shellIntegration.history": 500,
-  "terminal.integrated.defaultProfile.osx": "tmux",
+  // debugプロセスがうまく働かないことがある
+  // "terminal.integrated.defaultProfile.osx": "tmux",
   "terminal.integrated.profiles.osx": {
     "tmux": {
       "overrideName": true,

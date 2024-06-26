@@ -93,5 +93,19 @@
   {
     "key": "cmd+k cmd+\\",
     "command": "-workbench.action.splitEditorOrthogonal"
+  },
+  {
+    "key": "cmd+k t",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
+  {
+    "key": "ctrl+`",
+    "command": "-workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
+  {
+    "key": "cmd+k shift+t",
+    "command": "workbench.action.terminal.newWithProfile"
   }
 ]
