@@ -27,6 +27,14 @@ opt.ttimeoutlen = 1 -- key codesの待機時間
 opt.updatetime = 200 -- キーの入力待機時間
 opt.history = 200 -- command history
 
+
+-- 改行
+opt.wrapmargin = 0
+opt.wrap = true
+opt.linebreak = true
+opt.breakindent = true
+opt.columns = 80
+
 -- Skip for VSCode
 if not vim.g.vscode then
   opt.tabstop = 4 -- tab時の見かけのスペース数

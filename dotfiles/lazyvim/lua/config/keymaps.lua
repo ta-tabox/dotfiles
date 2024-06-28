@@ -25,6 +25,11 @@ local default_opts = { silent = true, noremap = true }
 local keymap = vim.api.nvim_set_keymap
 
 -- Nomal --
+-- 移動を論理行に
+keymap("n", "k", "gk", default_opts)
+keymap("n", "gk", "k", default_opts)
+keymap("n", "j", "gj", default_opts)
+keymap("n", "gj", "j", default_opts)
 
 -- yank
 keymap("n", "<Leader>p", '"0p', default_opts)
