@@ -107,5 +107,9 @@
   {
     "key": "cmd+k shift+t",
     "command": "workbench.action.terminal.newWithProfile"
+  },
+  {
+    "key": "cmd+k cmd+p",
+    "command": "python.execInTerminal"
   }
 ]
