@@ -1,6 +1,6 @@
 {
   "editor.accessibilitySupport": "off",
-  "editor.fontFamily": "HackGen console NF",
+  "editor.fontFamily": "Moralerspace Neon NF",
   "editor.fontSize": 14,
   "editor.renderWhitespace": "all",
   "editor.tabSize": 2,
@@ -23,7 +23,6 @@
   "explorer.confirmDelete": false,
   "terminal.integrated.enableImages": true,
   "terminal.integrated.copyOnSelection": true,
-  "terminal.integrated.fontFamily": "HackGen console NF",
   "terminal.external.osxExec": "iTerm",
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.shellIntegration.history": 500,
