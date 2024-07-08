@@ -33,7 +33,10 @@ opt.wrapmargin = 0
 opt.wrap = true
 opt.linebreak = true
 opt.breakindent = true
-opt.columns = 80
+-- 行に関する設定はあまりうまくいっていない
+-- opt.textwidth = 80
+-- opt.columns = 80
+-- opt.colorcolumn = '79'
 
 -- Skip for VSCode
 if not vim.g.vscode then
