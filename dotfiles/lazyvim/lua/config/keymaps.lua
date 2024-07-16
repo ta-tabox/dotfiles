@@ -66,10 +66,10 @@ keymap("t", "<C-n>", "<Down>", default_opts)
 
 -- General --
 -- ; :を入れ替える
-keymap("n", ";", ":", default_opts)
-keymap("n", ":", ";", default_opts)
-keymap("v", ";", ":", default_opts)
-keymap("v", ":", ";", default_opts)
+-- keymap("n", ";", ":", default_opts)
+-- keymap("n", ":", ";", default_opts)
+-- keymap("v", ";", ":", default_opts)
+-- keymap("v", ":", ";", default_opts)
 
 -- コマンドで削除した時はヤンクしない
 keymap("n", "x", '"_x', default_opts)
