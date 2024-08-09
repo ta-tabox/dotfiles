@@ -38,10 +38,6 @@ nnoremap k gk
 nnoremap gk k
 nnoremap j gj
 nnoremap gj j
-nnoremap ; :
-nnoremap : ;
-vnoremap ; :
-vnoremap : ;
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 "# ハイライトを消す
