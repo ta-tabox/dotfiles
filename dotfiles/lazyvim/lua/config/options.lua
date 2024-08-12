@@ -39,7 +39,7 @@ opt.breakindent = true
 -- opt.colorcolumn = '79'
 
 -- Skip for VSCode
-if not vim.g.vscode then
-  opt.tabstop = 4 -- tab時の見かけのスペース数
-  opt.shiftwidth = 4 -- 自動的に挿入される量
-end
+-- if not vim.g.vscode then
+--   opt.tabstop = 4 -- tab時の見かけのスペース数
+--   opt.shiftwidth = 4 -- 自動的に挿入される量
+-- end
