@@ -43,3 +43,6 @@ opt.breakindent = true
 --   opt.tabstop = 4 -- tab時の見かけのスペース数
 --   opt.shiftwidth = 4 -- 自動的に挿入される量
 -- end
+
+-- pythonのパスを指定
+vim.g.python3_host_prog = "~/.anyenv/envs/pyenv/shims/python3"
