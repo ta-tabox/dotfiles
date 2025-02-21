@@ -12,7 +12,7 @@ opt.shell = "/bin/zsh"
 
 -- newvimのメッセージを英語にする
 opt.langmenu = "en_US.UTF-8"
-vim.api.nvim_exec("language message en_US.UTF-8", true)
+vim.api.nvim_exec2("language message en_US.UTF-8", {})
 
 -- helpは日本語
 opt.helplang = "js"
@@ -43,6 +43,9 @@ opt.breakindent = true
 --   opt.tabstop = 4 -- tab時の見かけのスペース数
 --   opt.shiftwidth = 4 -- 自動的に挿入される量
 -- end
+
+-- Spell check
+opt.spelllang = { "en", "cjk" }
 
 -- pythonのパスを指定
 vim.g.python3_host_prog = "~/.anyenv/envs/pyenv/shims/python3"

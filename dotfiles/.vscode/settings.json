@@ -229,5 +229,20 @@
     "Uluru",
     "vuetify",
     "ZINDEX"
-  ]
+  ],
+  "git.confirmSync": false,
+  "editor.autoClosingComments": "never",
+  "indentRainbow.indicatorStyle": "light",
+  // vimの設定
+  "vim.easymotion": true,
+  "vim.highlightedyank.enable": true,
+  "vim.hlsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.vimrc.enable": true,
+  "vim.surround": true,
+  "vim.leader": "<Space>",
+  // 重さを軽くすることができるかも
+  "vim.statusBarColorControl": false,
+  "git.openRepositoryInParentFolders": "always",
+  "geminicodeassist.project": "gen-lang-client-0776059299"
 }

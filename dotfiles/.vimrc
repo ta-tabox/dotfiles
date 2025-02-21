@@ -42,8 +42,8 @@ nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 "# ハイライトを消す
 nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
-noremap <C-j> 5j
-noremap <C-k> 5k
+" noremap <C-j> 5j
+" noremap <C-k> 5k
 
 "コマンド履歴を呼び出すキーバインド
 cnoremap <C-p> <Up>
@@ -54,6 +54,14 @@ nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
+nnoremap <silent> <S-h> :bprevious<CR>
+nnoremap <silent> <S-l> :bnext<CR>
+
+"ウィンドウの移動
+noremap <silent> <C-h> <C-w>h
+noremap <silent> <C-j> <C-w>j
+noremap <silent> <C-k> <C-w>k
+noremap <silent> <C-l> <C-w>l
 
 "# 削除、カットの設定
 "## d, sはブラックホールレジスタを使用する
