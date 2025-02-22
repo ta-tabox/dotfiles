@@ -6,14 +6,13 @@
 .viminfo
 
 # zsh
-dotfiles/zsh/.zsh.d/.zcompcache/
-dotfiles/zsh/.zsh.d/.zcompdump
-dotfiles/zsh/.zsh.d/.zsh_history
-dotfiles/zsh/.zsh.d/.zsh_sessions
+dotfiles/.zsh.d/.zcompcache/
+dotfiles/.zsh.d/.zcompdump
+dotfiles/.zsh.d/.zsh_history
+dotfiles/.zsh.d/.zsh_sessions
 
 # neovim
 dotfiles/lazyvim/lazy-lock.json
-dotfiles/lazyvim/lazyvim.json
 
 # macOS
 .DS_Store
