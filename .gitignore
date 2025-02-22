@@ -11,6 +11,10 @@ dotfiles/zsh/.zsh.d/.zcompdump
 dotfiles/zsh/.zsh.d/.zsh_history
 dotfiles/zsh/.zsh.d/.zsh_sessions
 
+# neovim
+dotfiles/lazyvim/lazy-lock.json
+dotfiles/lazyvim/lazyvim.json
+
 # macOS
 .DS_Store
 
