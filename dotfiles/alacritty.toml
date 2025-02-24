@@ -29,3 +29,7 @@ bold_italic = { family = "Moralerspace Neon NF", style="Bold Italic" }
 [env]
 TERM = "alacritty"
 
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "Space"
+mods = "Command|Control"
