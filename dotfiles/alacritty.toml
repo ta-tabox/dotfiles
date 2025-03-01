@@ -24,10 +24,14 @@ italic = { family = "Moralerspace Neon NF", style="Italic" }
 bold_italic = { family = "Moralerspace Neon NF", style="Bold Italic" }
 
 [terminal]
-shell = { program = "/bin/zsh", args = ["-l", "-c", "tmux new-session -A -s main || tmux"] }
+
+[terminal.shell]
+program = "/usr/local/bin/fish"
+args = ["--login", "-l", "-c", "tmux new-session -A -s main || tmux"]
 
 [env]
-TERM = "alacritty"
+TERM = "xterm-256color" 		# macOS | Linux
+
 
 [[keyboard.bindings]]
 action = "ToggleViMode"
