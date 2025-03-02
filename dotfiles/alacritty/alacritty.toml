@@ -35,8 +35,14 @@ args = ["--login", "-l", "-c", "tmux new-session -A -s main || tmux"]
 [env]
 TERM = "xterm-256color" # macOS | Linux
 
-
+[keyboard]
 [[keyboard.bindings]]
 action = "ToggleViMode"
 key = "Space"
 mods = "Command|Control"
+
+# https://github.com/alacritty/alacritty/issues/7608
+[[keyboard.bindings]]
+chars = "\u001f"
+key = "Slash"
+mods = "Control"
