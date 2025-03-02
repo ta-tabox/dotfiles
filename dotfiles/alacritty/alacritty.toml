@@ -26,11 +26,14 @@ bold_italic = { family = "Moralerspace Neon NF", style="Bold Italic" }
 [terminal]
 
 [terminal.shell]
-program = "/usr/local/bin/fish"
+# 動的にfishやzshを切り替えたいが、うまくいかない
+# 基本的にtmuxで操作するので、tmux上で管理するので、当面はalacrittyのshellはzshでOK
+# program = "/usr/local/bin/fish"
+program = "/bin/zsh"
 args = ["--login", "-l", "-c", "tmux new-session -A -s main || tmux"]
 
 [env]
-TERM = "xterm-256color" 		# macOS | Linux
+TERM = "xterm-256color" # macOS | Linux
 
 
 [[keyboard.bindings]]
