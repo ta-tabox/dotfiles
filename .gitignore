@@ -11,6 +11,10 @@ dotfiles/.zsh.d/.zcompdump
 dotfiles/.zsh.d/.zsh_history
 dotfiles/.zsh.d/.zsh_sessions
 
+# fish
+dotfiles/fish/conf.d/local.fish
+dotfiles/fish/.local
+
 # neovim
 dotfiles/lazyvim/lazy-lock.json
 

@@ -1,0 +1,7 @@
+# envs for local
+# -gx -> export for global
+# set -gx MY_ENV_VAR "environment_specific_value"
+# set -gx MY_API_KEY "your_api_key"
+
+# test
+set -gx LOCAL_VAR_TEST "Test Var From Local"

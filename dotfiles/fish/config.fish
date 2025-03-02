@@ -1,3 +1,7 @@
+# load local variables
+if test -f ~/.config/fish/.local
+    source ~/.config/fish/.local
+end
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
