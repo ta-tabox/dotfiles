@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # 関数の読み込み
-dotfiles_root=$(cd $(dirname "$0")/.. && pwd)
+dotfiles_root="$(cd "$(dirname "$0")/.." && pwd)"
 . "${dotfiles_root}/scripts/common.sh"
 
 # シンボリックリンクを削除
@@ -26,7 +26,7 @@ cat ${linklist} | while IFS= read -r line; do
   IFS=" " read -r target link <<< "${line}"
 
   # 変数を展開
-  link="${link/#\~/${HOME}}"
+  link=$(echo "$link" | sed "s#^~#$HOME#")
 
   # シンボリックリンクを作成
   if ! __unlink "${link}"; then

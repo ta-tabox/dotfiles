@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # 関数の読み込み
-dotfiles_root=$(cd $(dirname "$0")/.. && pwd)
+dotfiles_root="$(cd "$(dirname "$0")/.." && pwd)"
 . "${dotfiles_root}/scripts/common.sh"
 
 # シンボリックリンクを作成
@@ -20,13 +20,20 @@ cat ${linklist} | while IFS= read -r line; do
   if [ -z "${line}" ] || [ "${line:0:1}" = "#" ]; then
     continue
   fi
+  # POSIX sh対応
+  # case "$line" in
+  #   "") continue ;;
+  #   \#*) continue ;;
+  # esac
 
   # target と link を分割
   IFS=" " read -r target link <<< "${line}"
+  # POSIZ sh対応 変数の格納がメインシェルに反映しないためうまく動作しない
+  # echo "$line" | IFS=" " read -r target link
 
   # 変数を展開
   target="${PWD}/${target}"
-  link="${link/#\~/${HOME}}"
+  link=$(echo "$link" | sed "s#^~#$HOME#")
 
   # シンボリックリンクを作成
   __mkdir "$(dirname "${link}")"
