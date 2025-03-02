@@ -16,6 +16,9 @@ lazyvim     ~/.config/nvim
 # zsh
 .zsh.d      ~/.zsh.d
 
+# fish
+fish      ~/.config/fish
+
 # sheldon
 sheldon     ~/.config/sheldon
 
