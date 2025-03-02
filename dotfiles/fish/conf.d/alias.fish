@@ -24,7 +24,7 @@ if type eza >/dev/null 2>&1
   alias e 'eza --icons --git'
   alias ea 'eza -a --icons --git'
   alias ee 'eza -aahl --icons --git'
-  alias et 'eza -T -L 3 -a -I "node_modules|.git|.cache" --icons'
+  alias et 'eza -T -L 3 -a -I "node_modules|.git|.cache" --color=always --icons'
   alias eta 'eza -T -a -I "node_modules|.git|.cache" --color=always --icons | less -r'
 
   function l
@@ -44,7 +44,7 @@ if type eza >/dev/null 2>&1
 
   function lt
     clear
-    eza -T -L 3 -a -I "node_modules|.git|.cache" --icons $argv
+    eza -T -L 3 -a -I "node_modules|.git|.cache" --color=always --icons $argv
   end
 
   function lta
