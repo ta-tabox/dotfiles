@@ -14,7 +14,9 @@ if [ ! -r "${linklist}" ]; then
   exit 0
 fi
 
-__remove_linklist_comment "${linklist}" | while IFS= read -r line; do
+# linklist.txtをループ処理
+# read -r で\をエスケープとして使用しない
+cat ${linklist} | while IFS= read -r line; do
   # 空行やコメント行はスキップ
   if [ -z "${line}" ] || [ "${line:0:1}" = "#" ]; then
     continue

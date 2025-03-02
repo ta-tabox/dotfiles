@@ -20,6 +20,7 @@ __mkdir() { (
 ); }
 
 # linklist.txtのコメントを削除
+# ループ処理内で該当行をスキップさせているので、今は使用していない
 __remove_linklist_comment() { (
 	# '#'以降と空行を削除
 	sed -e 's/\s*#.*//' \

@@ -15,7 +15,7 @@ if [ ! -r "${linklist}" ]; then
 fi
 
 # linklist.txt を読み込み、シンボリックリンクを作成
-__remove_linklist_comment "${linklist}" | while IFS= read -r line; do
+cat ${linklist} | while IFS= read -r line; do
   # 空行やコメント行はスキップ
   if [ -z "${line}" ] || [ "${line:0:1}" = "#" ]; then
     continue
