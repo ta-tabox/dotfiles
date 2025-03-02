@@ -1,38 +1,39 @@
 # 設定ファイルのリンクリスト
 # ターゲット(dotfiles内のパス)  リンクのパス
 # 以降はコメントとして無視
+# ~ → ${HOME}の展開に置換される
 
 # vim
-.vimrc      ${HOME}/.vimrc
+.vimrc      ~/.vimrc
 
 # neovim
-# nvim      ${HOME}/.config/nvim
-lazyvim     ${HOME}/.config/nvim
+# nvim      ~/.config/nvim
+lazyvim     ~/.config/nvim
 
 # git
-.gitconfig.d        ${HOME}/.gitconfig.d
+.gitconfig.d        ~/.gitconfig.d
 
 # zsh
-.zsh.d      ${HOME}/.zsh.d
+.zsh.d      ~/.zsh.d
 
 # sheldon
-sheldon     ${HOME}/.config/sheldon
+sheldon     ~/.config/sheldon
 
 # obsidian
 # icloud内のディレクトリに自動リングが作れなかったので、手動で作成すること
 # ln -fsn ~/dotfiles/.obsidian.vimrc ~/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/Brain/.obsidian.vimrc
 # 必要に応じて使用
-# .obsidian.vimrc       ${HOME}/Obsidian/Brain/.obsidian.vimrc
+# .obsidian.vimrc       ~/Obsidian/Brain/.obsidian.vimrc
 
 # starship
-starship.toml       ${HOME}/.config/starship.toml
+starship.toml       ~/.config/starship.toml
 
 # tmux
-.tmux.conf          ${HOME}/.tmux.conf
+.tmux.conf          ~/.tmux.conf
 
 # vscode
-.vscode/settings.json    ${HOME}/Library/Application\ Support/Code/User/settings.json
-.vscode/keybindings.json    ${HOME}/Library/Application\ Support/Code/User/keybindings.json
+.vscode/settings.json    ~/Library/Application Support/Code/User/settings.json
+.vscode/keybindings.json    ~/Library/Application Support/Code/User/keybindings.json
 
 # alacritty/alacritty.toml
-alacritty    ${HOME}/.config/alacritty
+alacritty    ~/.config/alacritty
