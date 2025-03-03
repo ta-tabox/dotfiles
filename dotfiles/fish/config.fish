@@ -16,6 +16,9 @@ else
 end
 # <<< conda initialize <<<
 
+# スタート時のメッセージを空に
+set -U fish_greeting
+
 # Initialize plugins
 anyenv init - fish | source
 zoxide init fish | source
