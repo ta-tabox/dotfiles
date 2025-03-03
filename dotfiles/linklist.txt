@@ -38,5 +38,8 @@ starship.toml       ~/.config/starship.toml
 .vscode/settings.json    ~/Library/Application Support/Code/User/settings.json
 .vscode/keybindings.json    ~/Library/Application Support/Code/User/keybindings.json
 
-# alacritty/alacritty.toml
+# alacritty
 alacritty    ~/.config/alacritty
+
+# bat
+bat         ~/.config/bat
