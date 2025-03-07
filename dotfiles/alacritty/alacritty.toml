@@ -8,6 +8,7 @@ import = [
 padding = { x = 0, y = 0 }
 opacity = 0.9
 blur = true
+option_as_alt = "Both"
 
 [scrolling]
 history = 100000
