@@ -23,5 +23,4 @@ set -U fish_greeting
 anyenv init - fish | source
 zoxide init fish | source
 fzf --fish | source
-export FZF_DEFAULT_COMMAND='fd --type f'
 starship init fish | source
