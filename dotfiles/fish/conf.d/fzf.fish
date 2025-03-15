@@ -19,14 +19,17 @@ set -x FZF_ALT_C_OPTS "
   --walker-skip .git,node_modules,target
   --preview 'tree -C {}'"
 
+# fishではcompletionに ** が使用できない
+# see https://github.com/junegunn/fzf/issues/484
+#
 # Use ~~ as the trigger sequence instead of the default **
 # set -x FZF_COMPLETION_TRIGGER '~~'
 
 # Options to fzf command
-set -x FZF_COMPLETION_OPTS "--preview 'bat -n --color=always {}'"
+# set -x FZF_COMPLETION_OPTS "--border --info=inline"
 
 # Options for path completion (e.g. vim **<TAB>)
-set -x FZF_COMPLETION_PATH_OPTS '--walker file,dir,follow,hidden'
+# set -x FZF_COMPLETION_PATH_OPTS '--walker file,dir,follow,hidden'
 
 # Options for directory completion (e.g. cd **<TAB>)
-set -x FZF_COMPLETION_DIR_OPTS '--walker dir,follow'
+# set -x FZF_COMPLETION_DIR_OPTS '--walker dir,follow'
