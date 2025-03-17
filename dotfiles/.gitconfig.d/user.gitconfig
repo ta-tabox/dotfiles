@@ -2,11 +2,25 @@
 
 [core]
   editor = vim
+  pager = delta
+
+[interactive]
+  diffFilter = delta --color-only
+
 [push]
 	default = current
   autoSetupRemote = true
+
 [ghq]
   ; 一覧に含めたいディレクトリ,一番最後がprimary
   ; see https://github.com/x-motemen/ghq?tab=readme-ov-file#configuration
   root = ~/repos
 
+[delta]
+  navigate = true  # use n and N to move between diff sections
+  dark = true      # or light = true, or omit for auto-detection
+  line-numbers = true
+  ; side-by-side = true # lazygitで見にくくなるので非活性
+
+[merge]
+  conflictstyle = zdiff3
