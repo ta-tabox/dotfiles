@@ -10,3 +10,13 @@ git:
   paging:
     colorArg: always
     pager: delta --dark --paging=never
+
+customCommands:
+  - command: czg
+    context: files
+    subprocess: true
+    key: <c-c>
+  - command: czg ai
+    context: files
+    subprocess: true
+    key: <c-C>
