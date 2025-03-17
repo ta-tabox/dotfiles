@@ -12,6 +12,9 @@ alias vi='vim'
 alias vim='nvim'
 alias view='nvim -R'
 
+# git
+abbr -a lg lazygit
+
 # python
 alias python="python3"
 alias pip="pip3"

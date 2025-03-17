@@ -16,6 +16,9 @@ alias vim='nvim'
 alias vi='nvim'
 alias view='nvim -R'
 
+# git
+alias lg='lazygit'
+
 # python
 alias python="python3"
 alias pip="pip3"
