@@ -1,8 +1,12 @@
 ; デバイス間で共通にしたいセッティング
 
 [core]
-    editor = vim
+  editor = vim
 [push]
 	default = current
-    autoSetupRemote = true
+  autoSetupRemote = true
+[ghq]
+  ; 一覧に含めたいディレクトリ,一番最後がprimary
+  ; see https://github.com/x-motemen/ghq?tab=readme-ov-file#configuration
+  root = ~/repos
 
