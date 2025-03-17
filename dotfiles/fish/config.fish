@@ -19,6 +19,9 @@ end
 # スタート時のメッセージを空に
 set -U fish_greeting
 
+# lazygitの設定ファイルのパスを~/.configに変更
+set -gx XDG_CONFIG_HOME "$HOME/.config"
+
 # Initialize plugins
 anyenv init - fish | source
 zoxide init fish | source

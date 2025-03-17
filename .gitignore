@@ -18,6 +18,9 @@ dotfiles/fish/.local
 # neovim
 dotfiles/lazyvim/lazy-lock.json
 
+# lazyvim
+dotfiles/lazygit/state.yml
+
 # macOS
 .DS_Store
 

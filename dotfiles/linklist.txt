@@ -43,3 +43,6 @@ alacritty    ~/.config/alacritty
 
 # bat
 bat         ~/.config/bat
+
+# lagygit
+lazygit     ~/.config/lazygit
