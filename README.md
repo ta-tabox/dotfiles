@@ -83,9 +83,11 @@ gui:
 
 ```sh
 brew install tmux sheldon starship anyenv neovim \
-        ripgrep lazygit fd \
+        ripgrep fd \
         fzf tree \
-        eza zoxide bat dust procs httpie
+        eza zoxide bat dust procs httpie \
+        gh lazygit git-delta ghq \
+        fish
 ```
 
 ## Tmuxの設定
