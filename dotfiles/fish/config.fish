@@ -1,6 +1,6 @@
 # load local variables
-if test -f ~/.config/fish/.local
-    source ~/.config/fish/.local
+if test -f ~/.config/fish/.local.fish
+    source ~/.config/fish/.local.fish
 end
 
 # >>> conda initialize >>>
