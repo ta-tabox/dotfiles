@@ -46,3 +46,7 @@ bat         ~/.config/bat
 
 # lagygit
 lazygit     ~/.config/lazygit
+
+# claude Code
+.claude/settings.json     ~/.claude/settings.json
+.claude/CLAUDE.md         ~/.claude/CLAUDE.md
