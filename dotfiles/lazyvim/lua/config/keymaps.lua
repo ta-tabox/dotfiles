@@ -22,9 +22,9 @@ end
 
 local default_opts = { silent = true, noremap = true }
 
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 
--- Nomal --
+-- Normal --
 -- 移動を論理行に
 keymap("n", "k", "gk", default_opts)
 keymap("n", "gk", "k", default_opts)

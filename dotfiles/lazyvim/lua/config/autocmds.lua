@@ -6,10 +6,15 @@
 local augroup = vim.api.nvim_create_augroup -- Create/get autocommand group
 local autocmd = vim.api.nvim_create_autocmd -- Create autocommand
 
--- Remove whitespace on save
+-- Remove whitespace on save (except for markdown files)
 autocmd("BufWritePre", {
   pattern = "*",
-  command = ":%s/\\s\\+$//e",
+  callback = function()
+    -- Markdownファイルの場合はスキップ
+    if vim.bo.filetype ~= "markdown" then
+      vim.cmd([[:%s/\s\+$//e]])
+    end
+  end,
 })
 
 autocmd("FileType", {
