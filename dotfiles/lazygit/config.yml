@@ -3,20 +3,19 @@
 gui:
   language: 'en'
   nerdFontsVersion: "3"
-
 git:
   branchLogCmd: "git log --graph --color=always --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' {{branchName}} --"
-  allBranchesLogCmd: "git log --graph --color=always --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all"
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never
-
+  pagers:
+    - colorArg: always
+      pager: delta --dark --paging=never
+  allBranchesLogCmds:
+    - git log --graph --color=always --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all
 customCommands:
   - command: czg
     context: files
-    subprocess: true
     key: <c-c>
+    output: terminal
   - command: czg ai
     context: files
-    subprocess: true
     key: <c-C>
+    output: terminal
