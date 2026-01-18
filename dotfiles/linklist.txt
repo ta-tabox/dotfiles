@@ -50,3 +50,8 @@ lazygit     ~/.config/lazygit
 # claude Code
 .claude/settings.json     ~/.claude/settings.json
 .claude/CLAUDE.md         ~/.claude/CLAUDE.md
+
+# codex
+codex/config.toml      ~/.codex/config.toml
+codex/AGENTS.md      ~/.codex/AGENTS.md
+codex/prompts      ~/.codex/prompts

@@ -99,3 +99,15 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
 プラグインのインストール `Ctrl + g -> I`
+
+## Codex
+
+```sh
+brew install codex
+```
+
+## claude code
+
+```sh
+brew install claude-code
+```
