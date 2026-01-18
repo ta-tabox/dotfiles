@@ -4,17 +4,17 @@
 # ~ → ${HOME}の展開に置換される
 
 # vim
-.vimrc      ~/.vimrc
+vimrc      ~/.vimrc
 
 # neovim
 # nvim      ~/.config/nvim
 lazyvim     ~/.config/nvim
 
 # git
-.gitconfig.d        ~/.gitconfig.d
+gitconfig.d        ~/.gitconfig.d
 
 # zsh
-.zsh.d      ~/.zsh.d
+zsh.d      ~/.zsh.d
 
 # fish
 fish      ~/.config/fish
@@ -32,11 +32,11 @@ sheldon     ~/.config/sheldon
 starship.toml       ~/.config/starship.toml
 
 # tmux
-.tmux.conf          ~/.tmux.conf
+tmux.conf          ~/.tmux.conf
 
 # vscode
-.vscode/settings.json    ~/Library/Application Support/Code/User/settings.json
-.vscode/keybindings.json    ~/Library/Application Support/Code/User/keybindings.json
+vscode/settings.json    ~/Library/Application Support/Code/User/settings.json
+vscode/keybindings.json    ~/Library/Application Support/Code/User/keybindings.json
 
 # alacritty
 alacritty    ~/.config/alacritty
@@ -48,8 +48,8 @@ bat         ~/.config/bat
 lazygit     ~/.config/lazygit
 
 # claude Code
-.claude/settings.json     ~/.claude/settings.json
-.claude/CLAUDE.md         ~/.claude/CLAUDE.md
+claude/settings.json     ~/.claude/settings.json
+claude/CLAUDE.md         ~/.claude/CLAUDE.md
 
 # codex
 codex/config.toml      ~/.codex/config.toml
