@@ -2,16 +2,26 @@
 
 ## インストール
 
-適宜 `linklist.txt`の中身を修正し
-`script/`ディレクトリ内で実行
+必要なツールは `dotfiles/Brewfile` から一括でインストールする。
 
 ```bash
+brew bundle --file dotfiles/Brewfile
+
+# 必要に応じて
 ./link.sh
 
 or
 
 ./unlink.sh
 ```
+
+`link.sh`/`unlink.sh` は `scripts/` ディレクトリ内で実行する。
+
+### Brewfile運用ルール
+
+- `brew bundle` は `dotfiles/Brewfile` に記載されたものを追加・更新するだけで、Brewfileにない既存パッケージは削除しない
+- `brew bundle --cleanup` を使うと、Brewfileにないものは削除対象になる
+- そのため、ベースはBrewfileで管理しつつ、個別インストールも併用できる
 
 ## Git
 
@@ -60,10 +70,7 @@ LazyVimを使用するにあたり以下のコマンドのインストールが�
 - ripgrep
 - lazygit
 
-```sh
-brew install ripgrep
-brew install lazygit
-```
+上記は `dotfiles/Brewfile` に含まれるため `brew bundle` で導入される。
 
 ### lazygitの英語化
 
@@ -79,16 +86,7 @@ gui:
 
 ## ツールのインストール
 
-ターミナル上で使用する以下のツールをインストールする
-
-```sh
-brew install tmux sheldon starship anyenv neovim \
-        ripgrep fd \
-        fzf tree \
-        eza zoxide bat dust procs httpie \
-        gh lazygit git-delta ghq \
-        fish
-```
+ターミナル上で使用するツールは `dotfiles/Brewfile` からまとめて導入する。
 
 ## Tmuxの設定
 
@@ -102,12 +100,20 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ## Codex
 
-```sh
-brew install codex
-```
+`dotfiles/Brewfile` に cask として含まれているため `brew bundle` で導入される。
 
 ## claude code
 
+claude codeはネイティブインストールを公式が推奨している
+
 ```sh
-brew install claude-code
+curl -fsSL https://claude.ai/install.sh | bash
 ```
+
+## mise
+
+`dotfiles/Brewfile` に含まれているため `brew bundle` で導入される。
+
+## Python仮想環境
+
+`uv` で管理する。
