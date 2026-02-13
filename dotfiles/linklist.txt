@@ -2,6 +2,8 @@
 # ターゲット(dotfiles内のパス)  リンクのパス
 # 以降はコメントとして無視
 # ~ → ${HOME}の展開に置換される
+# Homebrew
+Brewfile    ~/.Brewfile
 
 # vim
 vimrc      ~/.vimrc
