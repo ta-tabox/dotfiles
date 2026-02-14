@@ -1,7 +1,7 @@
 [general]
 live_config_reload = true
 import = [
-    "~/.config/alacritty/themes/themes/dracula.toml"
+    "~/.config/alacritty/themes/dracula.toml"
 ]
 
 [window]
@@ -14,7 +14,7 @@ option_as_alt = "Both"
 history = 100000
 
 [cursor]
-style = "Beam"
+style = "Block"
 
 [font]
 size = 12.0
