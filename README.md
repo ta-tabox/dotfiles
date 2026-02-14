@@ -1,5 +1,7 @@
 # dotfiles
 
+AIエージェント向けの構成ガイド: [`AGENTS.md`](AGENTS.md)
+
 ## インストール
 
 必要なツールは `dotfiles/Brewfile` から一括でインストールする。
