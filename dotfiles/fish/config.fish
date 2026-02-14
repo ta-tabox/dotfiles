@@ -3,6 +3,11 @@ if test -f ~/.config/fish/.local.fish
     source ~/.config/fish/.local.fish
 end
 
+# fishを直接起動した時にhomebrewの環境変数を設定する
+if test -x /opt/homebrew/bin/brew
+   eval (/opt/homebrew/bin/brew shellenv)
+end
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 if test -f /opt/miniconda3/bin/conda
