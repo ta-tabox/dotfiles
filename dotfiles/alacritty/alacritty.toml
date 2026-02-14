@@ -19,10 +19,10 @@ style = "Block"
 [font]
 size = 12.0
 offset = { x = 0, y = 2 }
-normal = { family = "Moralerspace Neon NF", style="Regular" }
-bold = { family = "Moralerspace Neon NF", style="Bold" }
-italic = { family = "Moralerspace Neon NF", style="Italic" }
-bold_italic = { family = "Moralerspace Neon NF", style="Bold Italic" }
+normal = { family = "Moralerspace Neon", style="Regular" }
+bold = { family = "Moralerspace Neon", style="Bold" }
+italic = { family = "Moralerspace Neon", style="Italic" }
+bold_italic = { family = "Moralerspace Neon", style="Bold Italic" }
 
 [terminal]
 
