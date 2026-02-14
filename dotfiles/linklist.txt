@@ -43,6 +43,9 @@ vscode/keybindings.json    ~/Library/Application Support/Code/User/keybindings.j
 # alacritty
 alacritty    ~/.config/alacritty
 
+# ghostty
+ghostty      ~/.config/ghostty
+
 # bat
 bat         ~/.config/bat
 
