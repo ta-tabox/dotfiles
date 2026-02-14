@@ -26,7 +26,7 @@ sheldon     ~/.config/sheldon
 
 # obsidian
 # icloud内のディレクトリに自動リングが作れなかったので、手動で作成すること
-# ln -fsn ~/dotfiles/.obsidian.vimrc ~/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/Brain/.obsidian.vimrc
+# ln -fsn ~/dotfiles/dotfiles/obsidian.vimrc ~/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/Brain/.obsidian.vimrc
 # 必要に応じて使用
 # .obsidian.vimrc       ~/Obsidian/Brain/.obsidian.vimrc
 
