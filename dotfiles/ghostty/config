@@ -1,5 +1,7 @@
 # Ghostty configuration
 # Docs: https://ghostty.org/docs/config
+# デフォルト値は以下のコマンドで確認できる
+# ghostty +show-config --default --docs | view
 
 # --- 見た目・フォント ---
 font-size = 14
