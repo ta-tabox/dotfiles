@@ -28,7 +28,8 @@ set -U fish_greeting
 set -gx XDG_CONFIG_HOME "$HOME/.config"
 
 # Initialize plugins
-anyenv init - fish | source
+# anyenv init - fish | source
+mise activate fish | source
 zoxide init fish | source
 fzf --fish | source
 starship init fish | source
