@@ -48,4 +48,4 @@ opt.breakindent = true
 opt.spelllang = { "en", "cjk" }
 
 -- pythonのパスを指定
-vim.g.python3_host_prog = "~/.anyenv/envs/pyenv/shims/python3"
+vim.g.python3_host_prog = "~/.local/share/mise/installs/python/3.14.3/bin/python"
