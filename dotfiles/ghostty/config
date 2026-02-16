@@ -23,8 +23,10 @@ theme = Dracula+
 # ========================================
 # ウィンドウ
 # ========================================
-background-opacity = 0.90
-background-blur-radius = 20
+background = #000000
+background-opacity = 0.8
+background-blur = true
+unfocused-split-opacity = 0.6
 
 # ウィンドウ内の余白
 window-padding-x = 12
