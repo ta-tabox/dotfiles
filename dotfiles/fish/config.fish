@@ -32,3 +32,11 @@ anyenv init - fish | source
 zoxide init fish | source
 fzf --fish | source
 starship init fish | source
+
+# pnpm global bin
+# miseでpnpmを管理するため、pnpm setupは使用せず、独自にpnpmのグローバルbinのパスを設定する
+set -gx PNPM_HOME "$HOME/.local/share/pnpm"
+if not contains $PNPM_HOME $PATH
+    set -gx PATH $PNPM_HOME $PATH
+end
+
