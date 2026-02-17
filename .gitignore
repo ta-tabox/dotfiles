@@ -13,7 +13,7 @@ dotfiles/.zsh.d/.zsh_sessions
 
 # fish
 dotfiles/fish/conf.d/local.fish
-dotfiles/fish/.local
+dotfiles/fish/local.fish
 dotfiles/fish/fish_variables
 dotfiles/fish/conf.d/fish_frozen_*.fish
 
