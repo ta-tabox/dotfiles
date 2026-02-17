@@ -18,6 +18,11 @@ alias view='nvim -R'
 
 # git
 alias lg='lazygit'
+gcd() {
+  local dir
+  dir="$(ghq list | fzf)"
+  [[ -n "$dir" ]] && cd "$dir"
+}
 # プロジェクトルートに戻る
 alias proot='cd $(git rev-parse --show-toplevel)'
 
