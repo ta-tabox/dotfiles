@@ -14,7 +14,7 @@ alias view='nvim -R'
 
 # git
 abbr -a lg lazygit
-abbr -a gcd 'cd (ghq list | fzf)'
+abbr -a gcd 'cd (ghq list --full-path | fzf)'
 
 # python
 alias python="python3"

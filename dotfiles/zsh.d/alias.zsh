@@ -20,7 +20,7 @@ alias view='nvim -R'
 alias lg='lazygit'
 gcd() {
   local dir
-  dir="$(ghq list | fzf)"
+  dir="$(ghq list --full-path | fzf)"
   [[ -n "$dir" ]] && cd "$dir"
 }
 # プロジェクトルートに戻る
