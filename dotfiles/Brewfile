@@ -4,16 +4,23 @@ brew "dust"
 brew "eza"
 brew "fd"
 brew "fish"
+brew "ffmpeg" # yazi: 動画サムネイル生成
 brew "fzf"
 brew "gh"
 brew "ghq"
 brew "git-delta"
 brew "git-secrets"
+brew "ghostscript" # snacks.image: 画像/PDF関連のレンダリング補助
 brew "httpie"
+brew "imagemagick" # yazi: フォント/HEIC/JPEG XL プレビュー
+brew "jq" # yazi: JSONプレビュー
 brew "lazygit"
 brew "neovim"
+brew "poppler" # yazi: PDFプレビュー
 brew "procs"
+brew "resvg" # yazi: SVGプレビュー
 brew "ripgrep"
+brew "sevenzip" # yazi: アーカイブ展開/プレビュー
 brew "sheldon"
 brew "starship"
 brew "tmux"
@@ -26,6 +33,7 @@ cask "codex"
 cask "docker-desktop"
 cask "font-moralerspace"
 cask "font-hackgen-nerd"
+cask "font-symbols-only-nerd-font" # yazi: Nerd Font 記号グリフ
 cask "ghostty"
 cask "obsidian"
 cask "raycast"
