@@ -13,7 +13,8 @@ file_opener = "vscode"
 notify = ["bash", "-lc", "afplay /System/Library/Sounds/Ping.aiff"]
 
 # trueにすると、npmのインストールや外部APIへのリクエストが可能 (デフォルトは false)
-network_access = false
+network_access = true
+web_search = "live"
 personality = "pragmatic"
 
 [tui]
