@@ -23,6 +23,17 @@ gcd() {
   dir="$(ghq list --full-path | fzf)"
   [[ -n "$dir" ]] && cd "$dir"
 }
+
+# yaziを終了した際に、終了時のディレクトリへ移動する
+y() {
+  local tmp cwd
+  tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+  command yazi "$@" --cwd-file="$tmp"
+  IFS= read -r -d '' cwd < "$tmp"
+  [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+  rm -f -- "$tmp"
+}
+
 # プロジェクトルートに戻る
 alias proot='cd $(git rev-parse --show-toplevel)'
 
