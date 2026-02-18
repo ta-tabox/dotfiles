@@ -94,11 +94,8 @@ gui:
 
 ### [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)のインストール
 
-```sh
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-```
-
-プラグインのインストール `Ctrl + g -> I`
+- 新しい環境をセットアップする際は、`tpm` のインストールを忘れないこと。
+- 具体的な手順は公式READMEを参照する: https://github.com/tmux-plugins/tpm
 
 ## Codex
 
