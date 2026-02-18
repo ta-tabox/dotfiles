@@ -24,6 +24,10 @@ end
 # スタート時のメッセージを空に
 set -U fish_greeting
 
+# エディタのデフォルトをNeovimに統一
+set -gx EDITOR nvim
+set -gx VISUAL nvim
+
 # lazygitの設定ファイルのパスを~/.configに変更
 set -gx XDG_CONFIG_HOME "$HOME/.config"
 
@@ -40,4 +44,3 @@ set -gx PNPM_HOME "$HOME/.local/share/pnpm"
 if not contains $PNPM_HOME $PATH
     set -gx PATH $PNPM_HOME $PATH
 end
-
