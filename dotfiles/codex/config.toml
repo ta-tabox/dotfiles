@@ -1,4 +1,4 @@
-model = "gpt-5.2-codex"
+model = "gpt-5.3-codex"
 model_verbosity = "medium" # 詳細な応答の冗長さ（情報量の多さ）
 sandbox_mode = "read-only" # 最も安全（必要時のみ緩める）
 
@@ -27,3 +27,6 @@ notifications = ["agent-turn-complete", "approval-requested"]
 inherit = "core"
 include_only = ["PATH", "HOME", "USER"]
 exclude = ["AWS_*", "AZURE_*", "GOOGLE_", "*TOKEN*", "*SECRET*", "*KEY*"]
+
+[notice.model_migrations]
+"gpt-5.2-codex" = "gpt-5.3-codex"
