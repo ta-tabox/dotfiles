@@ -34,7 +34,7 @@ sheldon     ~/.config/sheldon
 starship.toml       ~/.config/starship.toml
 
 # tmux
-tmux.conf          ~/.tmux.conf
+tmux        ~/.config/tmux
 
 # vscode
 vscode/settings.json    ~/Library/Application Support/Code/User/settings.json
