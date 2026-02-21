@@ -14,6 +14,12 @@ set smartindent "オートインデント
 set laststatus=2
 set ruler "カーソルの行列目を表示（ルーラー）
 set history=200 "command history
+set autoread
+
+augroup checktime
+  autocmd!
+  autocmd FocusGained,BufEnter,CursorHold * checktime
+augroup END
 
 set backspace=indent,eol,start "バックスペースの対象の設定
 

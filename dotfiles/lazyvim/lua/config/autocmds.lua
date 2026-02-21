@@ -49,3 +49,9 @@ autocmd({ "FileType" }, {
     vim.b.autoformat = false
   end,
 })
+
+-- Reload buffers when files are changed outside of Neovim (e.g. Codex edits)
+autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
+  pattern = { "*" },
+  command = "checktime",
+})
