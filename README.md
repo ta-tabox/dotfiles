@@ -92,6 +92,11 @@ gui:
 
 ## Tmuxの設定
 
+tmux設定は `dotfiles/tmux/` 配下で管理している。
+
+- メイン設定: `dotfiles/tmux/tmux.conf`
+- 補助スクリプト: `dotfiles/tmux/edit_scrollback.sh`
+
 ### [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)のインストール
 
 - 新しい環境をセットアップする際は、`tpm` のインストールを忘れないこと。

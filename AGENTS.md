@@ -53,7 +53,8 @@ AIエージェントはこのファイルを最初に読み、以下の前提で
   - `dotfiles/_nvim/`（予備/別系統のNeovim設定）
   - `dotfiles/vimrc`
 - ターミナル/TUI
-  - `dotfiles/tmux.conf`
+  - `dotfiles/tmux/tmux.conf`
+  - `dotfiles/tmux/edit_scrollback.sh`
   - `dotfiles/starship.toml`
   - `dotfiles/alacritty/`
   - `dotfiles/ghostty/`
