@@ -27,11 +27,11 @@ bold_italic = { family = "Moralerspace Neon", style="Bold Italic" }
 [terminal]
 
 [terminal.shell]
-# 動的にfishやzshを切り替えたいが、うまくいかない
-# 基本的にtmuxで操作するので、tmux上で管理するので、当面はalacrittyのshellはzshでOK
-# program = "/usr/local/bin/fish"
-program = "/bin/zsh"
-args = ["--login", "-l", "-c", "tmux new-session -A -s main || tmux"]
+program = "/bin/sh"
+args = ["-lc", "exec \"$HOME/.config/alacritty/launch-shell.sh\""]
+
+# program = "/bin/zsh"
+# args = ["--login", "-l", "-c", "tmux new-session -A -s main || tmux"]
 
 [env]
 TERM = "xterm-256color" # macOS | Linux
