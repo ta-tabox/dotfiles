@@ -6,7 +6,7 @@ import = [
 
 [window]
 padding = { x = 0, y = 0 }
-# opacity = 0.9 透明度
+opacity = 0.85
 blur = true
 option_as_alt = "Both"
 
