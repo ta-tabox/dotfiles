@@ -32,9 +32,9 @@ set -gx VISUAL nvim
 set -gx XDG_CONFIG_HOME "$HOME/.config"
 
 # Initialize plugins
-if command -v mise > /dev/null 2>&1; then
+if type -q mise
     mise activate fish | source
-else if command -v anyenv > /dev/null 2>&1; then
+else if type -q anyenv
     anyenv init - fish | source
 end
 
