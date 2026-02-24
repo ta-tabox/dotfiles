@@ -1,8 +1,12 @@
 # Initialize
 eval "$(sheldon source)"
 
-# eval "$(anyenv init -)"
-eval "$(mise activate zsh)"
+if command -v mise &>dev/null; then
+    eval "$(mise activate zsh)"
+elif command -v anyenv &> /dev/null; then
+    eval "$(anyenv init - zsh)"
+fi
+
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 

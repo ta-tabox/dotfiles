@@ -32,8 +32,12 @@ set -gx VISUAL nvim
 set -gx XDG_CONFIG_HOME "$HOME/.config"
 
 # Initialize plugins
-# anyenv init - fish | source
-mise activate fish | source
+if command -v mise > /dev/null 2>&1; then
+    mise activate fish | source
+else if command -v anyenv > /dev/null 2>&1; then
+    anyenv init - fish | source
+end
+
 zoxide init fish | source
 fzf --fish | source
 starship init fish | source
