@@ -60,3 +60,9 @@ claude/CLAUDE.md         ~/.claude/CLAUDE.md
 codex/config.toml      ~/.codex/config.toml
 codex/AGENTS.md      ~/.codex/AGENTS.md
 codex/prompts      ~/.codex/prompts
+
+# skills
+# open standard agents(codex)
+agents      ~/.agents
+agents/skills      ~/.claude/skills
+agents/skills      ~/.cursor/skills
