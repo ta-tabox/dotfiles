@@ -38,9 +38,17 @@ TERM = "xterm-256color" # macOS | Linux
 
 [keyboard]
 [[keyboard.bindings]]
+# cmd + ctrl + space to toggle vi mod
 action = "ToggleViMode"
 key = "Space"
 mods = "Command|Control"
+
+
+[[keyboard.bindings]]
+# shift + enter で改行(Claude Code等のCSI u対応アプリ向け)
+chars = "\u001b[13;2u"
+key = "Return"
+mods = "Shift"
 
 # https://github.com/alacritty/alacritty/issues/7608
 [[keyboard.bindings]]
