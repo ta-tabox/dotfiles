@@ -89,6 +89,7 @@ reloaded=0
 skipped=0
 queued_current_pane=0
 current_pane_id="${TMUX_PANE:-}"
+skipped_details=""
 
 # current_command が対象シェルのペインだけに source を送信する
 # vim など他プロセスが前面のペインはここで自動的にスキップされる
@@ -102,12 +103,30 @@ while IFS=' ' read -r pane_id pane_cmd; do
     tmux send-keys -t "${pane_id}" "${reload_cmd}" C-m
     queued_current_pane=$((queued_current_pane + 1))
   else
+    pane_cmd="${pane_cmd:-unknown}"
+    skipped_details+="- ${pane_id}: ${pane_cmd}"$'\n'
     skipped=$((skipped + 1))
   fi
 done <<< "${pane_lines}"
+
+total_panes=$((reloaded + queued_current_pane + skipped))
+applied_panes=$((reloaded + queued_current_pane))
+progress_hundredths=0
+if [[ "${total_panes}" -gt 0 ]]; then
+  progress_hundredths=$((applied_panes * 10000 / total_panes))
+fi
+progress_whole=$((progress_hundredths / 100))
+progress_frac=$((progress_hundredths % 100))
 
 echo "Shell: ${shell_name}"
 echo "Config: ${config_path}"
 echo "Reloaded ${reloaded} pane(s)."
 echo "Queued for current pane ${queued_current_pane} pane(s)."
 echo "Skipped ${skipped} pane(s)."
+printf 'Progress: %d/%d ( %d.%02d%% )\n' \
+  "${applied_panes}" "${total_panes}" "${progress_whole}" "${progress_frac}"
+
+if [[ "${skipped}" -gt 0 ]]; then
+  echo "Skipped pane commands:"
+  printf "%s" "${skipped_details}"
+fi
