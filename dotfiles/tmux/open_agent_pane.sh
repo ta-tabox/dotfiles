@@ -2,10 +2,10 @@
 set -euo pipefail
 
 # Opens an AI agent pane on the right side of the current pane.
-# Environment variables:
-# - TMUX_DEFAULT_AGENT: default agent command for "default" mode (e.g. codex, claude)
-# - TMUX_AI_PANE_SIZE: pane size passed to `split-window -l` (default: 60)
-# - default mode: use TMUX_DEFAULT_AGENT if valid, otherwise show chooser
+# tmux options (preferred):
+# - @ai_default_agent: default agent command for "default" mode
+# - @ai_pane_size: pane size passed to `split-window -l` (default: 60)
+# - default mode: use @ai_default_agent if valid, otherwise show chooser
 # - choose mode: always show chooser from detected agent CLIs
 # - launch mode: open a pane with a specific agent command
 
@@ -16,8 +16,8 @@ fi
 
 mode="${1:-default}"
 agent_arg="${2:-}"
-pane_size="${TMUX_AI_PANE_SIZE:-60}"
-default_agent="${TMUX_DEFAULT_AGENT:-}"
+pane_size="60"
+default_agent=""
 
 agents=(
   codex
@@ -30,6 +30,28 @@ agents=(
 has_command() {
   command -v "$1" >/dev/null 2>&1
 }
+
+tmux_option_value() {
+  local key="$1"
+  tmux show-options -gqv "${key}" 2>/dev/null || true
+}
+
+trim_spaces() {
+  local s="$1"
+  s="${s#"${s%%[![:space:]]*}"}"
+  s="${s%"${s##*[![:space:]]}"}"
+  printf '%s' "${s}"
+}
+
+# tmux option のみを参照する。
+default_agent="$(tmux_option_value @ai_default_agent)"
+pane_size="$(trim_spaces "$(tmux_option_value @ai_pane_size)")"
+
+default_agent="$(trim_spaces "${default_agent}")"
+pane_size="$(trim_spaces "${pane_size}")"
+if [[ -z "${pane_size}" ]]; then
+  pane_size="60"
+fi
 
 open_agent_pane() {
   local agent="$1"
