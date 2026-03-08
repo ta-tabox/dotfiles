@@ -71,6 +71,24 @@ keymap("t", "<C-n>", "<Down>", default_opts)
 -- keymap("v", ";", ":", default_opts)
 -- keymap("v", ":", ";", default_opts)
 
+-- LazyVim defaults <leader><space> to project root.
+-- Swap <leader><space> and <leader>fF behaviors.
+keymap("n", "<leader><space>", LazyVim.pick("files", { root = false }), opts("Find Files (cwd)"))
+keymap("n", "<leader>ff", LazyVim.pick("files", { root = false }), opts("Find Files (cwd)"))
+keymap("n", "<leader>fF", LazyVim.pick("files"), opts("Find Files (root dir)"))
+
+-- Swap <leader>e and <leader>E behaviors.
+keymap("n", "<leader>fe", function()
+  Snacks.explorer()
+end, opts("Explorer Snacks (cwd)"))
+
+keymap("n", "<leader>fE", function()
+  Snacks.explorer({ cwd = LazyVim.root() })
+end, opts("Explorer Snacks (root dir)"))
+
+keymap("n", "<leader>e", "<leader>fe", { remap = true, silent = true, desc = "Explorer Snacks (cwd)" })
+keymap("n", "<leader>E", "<leader>fE", { remap = true, silent = true, desc = "Explorer Snacks (root dir)" })
+
 -- コマンドで削除した時はヤンクしない
 keymap("n", "x", '"_x', default_opts)
 keymap("v", "x", '"_x', default_opts)
