@@ -36,15 +36,51 @@ pane_size="60"
 default_agent=""
 
 agents=(
-  codex
-  claude
-  aider
-  gemini
-  opencode
+  "codex:codex"
+  "claude:claude"
+  "aider:aider"
+  "gemini:gemini"
+  "opencode:opencode"
+  "copilot:copilot"
+  "cursor:agent"
 )
 
 has_command() {
   command -v "$1" >/dev/null 2>&1
+}
+
+resolve_agent_command() {
+  local selection="$1"
+  local spec
+  local name
+  local command
+
+  for spec in "${agents[@]}"; do
+    IFS=':' read -r name command <<<"${spec}"
+    if [[ "${selection}" == "${name}" ]] || [[ "${selection}" == "${command}" ]]; then
+      printf '%s' "${command}"
+      return 0
+    fi
+  done
+
+  printf '%s' "${selection}"
+}
+
+resolve_agent_name() {
+  local selection="$1"
+  local spec
+  local name
+  local command
+
+  for spec in "${agents[@]}"; do
+    IFS=':' read -r name command <<<"${spec}"
+    if [[ "${selection}" == "${name}" ]] || [[ "${selection}" == "${command}" ]]; then
+      printf '%s' "${name}"
+      return 0
+    fi
+  done
+
+  printf '%s' "${selection}"
 }
 
 tmux_option_value() {
@@ -70,10 +106,15 @@ if [[ -z "${pane_size}" ]]; then
 fi
 
 open_agent_pane() {
-  local agent="$1"
+  local selection="$1"
+  local agent
+  local display_name
+
+  agent="$(resolve_agent_command "${selection}")"
+  display_name="$(resolve_agent_name "${selection}")"
 
   if ! has_command "${agent}"; then
-    tmux display-message "Agent command not found: ${agent}"
+    tmux display-message "Agent command not found: ${display_name} (${agent})"
     return 1
   fi
 
@@ -81,28 +122,42 @@ open_agent_pane() {
 }
 
 show_menu() {
-  local available=()
+  local available_specs=()
+  local available_names=()
   local key
   local idx=0
   local menu_args=()
-  local agent
+  local spec
+  local name
+  local command
+  local default_name
+  local default_command
 
-  for agent in "${agents[@]}"; do
-    if has_command "${agent}"; then
-      available+=("${agent}")
+  for spec in "${agents[@]}"; do
+    IFS=':' read -r name command <<<"${spec}"
+    if has_command "${command}"; then
+      available_specs+=("${name}:${command}")
+      available_names+=("${name}")
     fi
   done
 
   # デフォルトが主要候補外でも、コマンドが存在すれば選択肢に加える
-  if [[ -n "${default_agent}" ]] && has_command "${default_agent}"; then
-    case " ${available[*]} " in
-      *" ${default_agent} "*) ;;
-      *) available=("${default_agent}" "${available[@]}") ;;
-    esac
+  if [[ -n "${default_agent}" ]]; then
+    default_name="$(resolve_agent_name "${default_agent}")"
+    default_command="$(resolve_agent_command "${default_agent}")"
+    if has_command "${default_command}"; then
+      case " ${available_names[*]} " in
+        *" ${default_name} "*) ;;
+        *)
+          available_specs=("${default_name}:${default_command}" "${available_specs[@]}")
+          available_names=("${default_name}" "${available_names[@]}")
+          ;;
+      esac
+    fi
   fi
 
-  if [[ "${#available[@]}" -eq 0 ]]; then
-    tmux display-message "No supported AI agent CLI found (checked: ${agents[*]})"
+  if [[ "${#available_specs[@]}" -eq 0 ]]; then
+    tmux display-message "No supported AI agent CLI found"
     return 1
   fi
 
@@ -111,7 +166,8 @@ show_menu() {
     return 1
   fi
 
-  for agent in "${available[@]}"; do
+  for spec in "${available_specs[@]}"; do
+    IFS=':' read -r name command <<<"${spec}"
     idx=$((idx + 1))
     if [[ "${idx}" -le 9 ]]; then
       key="${idx}"
@@ -119,7 +175,7 @@ show_menu() {
       key=""
     fi
 
-    menu_args+=("${agent}" "${key}" "run-shell '~/.config/tmux/open_agent_pane.sh launch ${agent}'")
+    menu_args+=("${name}" "${key}" "run-shell '~/.config/tmux/open_agent_pane.sh launch ${name}'")
   done
 
   menu_args+=("" "" "")
@@ -130,7 +186,7 @@ show_menu() {
 
 case "${mode}" in
   default)
-    if [[ -n "${default_agent}" ]] && has_command "${default_agent}"; then
+    if [[ -n "${default_agent}" ]] && has_command "$(resolve_agent_command "${default_agent}")"; then
       open_agent_pane "${default_agent}"
     else
       show_menu
