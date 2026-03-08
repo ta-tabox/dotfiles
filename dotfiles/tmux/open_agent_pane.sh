@@ -14,6 +14,22 @@ if [[ -z "${TMUX:-}" ]]; then
   exit 1
 fi
 
+# tmux run-shell は最小限の PATH になる場合があるため、
+# ユーザー環境で CLI が入りやすいディレクトリを補完する。
+add_path_if_dir() {
+  local dir="$1"
+  if [[ -d "${dir}" ]] && [[ ":${PATH}:" != *":${dir}:"* ]]; then
+    PATH="${dir}:${PATH}"
+  fi
+}
+
+add_path_if_dir "${HOME}/.local/bin"
+add_path_if_dir "${HOME}/.cargo/bin"
+add_path_if_dir "${HOME}/go/bin"
+add_path_if_dir "/opt/homebrew/bin"
+add_path_if_dir "/usr/local/bin"
+export PATH
+
 mode="${1:-default}"
 agent_arg="${2:-}"
 pane_size="60"
