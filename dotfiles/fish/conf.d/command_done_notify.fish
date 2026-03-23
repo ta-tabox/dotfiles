@@ -1,0 +1,113 @@
+# 長時間コマンド完了時の通知
+# - しきい値以上の実行時間
+# - 除外コマンド以外
+# のときに、音 / tmux / macOS 通知を送る
+
+if not set -q COMMAND_DONE_NOTIFY_THRESHOLD
+    set -g COMMAND_DONE_NOTIFY_THRESHOLD 15
+end
+
+set -l __cmd_notify_ignore_file "$HOME/.config/tmux/command_done_notify_ignore.list"
+
+function __cmd_notify_load_default_ignore --argument-names file
+    if not test -r "$file"
+        return 1
+    end
+
+    set -l values
+    while read -l line
+        set line (string trim -- "$line")
+        if test -z "$line"
+            continue
+        end
+        if string match -qr '^#' -- "$line"
+            continue
+        end
+        set -a values "$line"
+    end < "$file"
+
+    if test (count $values) -gt 0
+        set -g COMMAND_DONE_NOTIFY_IGNORE $values
+        return 0
+    end
+
+    return 1
+end
+
+if not set -q COMMAND_DONE_NOTIFY_IGNORE
+    __cmd_notify_load_default_ignore "$__cmd_notify_ignore_file" >/dev/null 2>&1
+end
+
+set -g __cmd_notify_started_at 0
+set -g __cmd_notify_last_cmd ""
+
+function __cmd_notify_extract_cmd --argument-names raw
+    set raw (string trim -- "$raw")
+    if test -z "$raw"
+        return 1
+    end
+
+    set -l words (string split ' ' -- "$raw")
+    for w in $words
+        if string match -rq '^[A-Za-z_][A-Za-z0-9_]*=' -- "$w"
+            continue
+        end
+
+        switch "$w"
+            case sudo env command builtin nocorrect noglob time nohup
+                continue
+            case '--'
+                continue
+            case '-*'
+                continue
+            case '*'
+                set w (path basename "$w")
+                echo (string lower -- "$w")
+                return 0
+        end
+    end
+
+    return 1
+end
+
+function __cmd_notify_should_skip --argument-names cmd
+    for ignored in $COMMAND_DONE_NOTIFY_IGNORE
+        if test "$cmd" = (string lower -- "$ignored")
+            return 0
+        end
+    end
+    return 1
+end
+
+function __cmd_notify_preexec --on-event fish_preexec
+    set -g __cmd_notify_started_at (date +%s)
+    set -g __cmd_notify_last_cmd "$argv[1]"
+end
+
+function __cmd_notify_postexec --on-event fish_postexec
+    set -l exit_status $status
+    if test "$__cmd_notify_started_at" -le 0
+        return
+    end
+
+    set -l now (date +%s)
+    set -l elapsed (math "$now - $__cmd_notify_started_at")
+    set -g __cmd_notify_started_at 0
+
+    if test $elapsed -lt $COMMAND_DONE_NOTIFY_THRESHOLD
+        return
+    end
+
+    set -l cmd (__cmd_notify_extract_cmd "$__cmd_notify_last_cmd" 2>/dev/null)
+    if test -z "$cmd"
+        return
+    end
+
+    if __cmd_notify_should_skip "$cmd"
+        return
+    end
+
+    if test -r "$HOME/.config/tmux/notify_shell_command_done.sh"
+        /bin/bash "$HOME/.config/tmux/notify_shell_command_done.sh" "$elapsed" "$exit_status" "$__cmd_notify_last_cmd" >/dev/null 2>&1 </dev/null & disown
+    end
+end

@@ -23,6 +23,7 @@ brew "ripgrep"
 brew "sevenzip" # yazi: アーカイブ展開/プレビュー
 brew "sheldon"
 brew "starship"
+brew "terminal-notifier" # macOS 通知フォールバック（Focus対策）
 brew "tmux"
 brew "mise"
 brew "yazi"

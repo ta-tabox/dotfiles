@@ -1,0 +1,29 @@
+# command_done_notify default ignore commands
+# 空行と `#` で始まる行は無視される
+
+# Editors / pagers
+vim
+nvim
+vi
+view
+less
+man
+more
+yazi
+
+# Monitors / long-running TUI
+top
+htop
+btop
+watch
+
+# Remote / multiplexer
+tmux
+ssh
+sftp
+scp
+mosh
+
+# Git TUIs
+lazygit
+tig
