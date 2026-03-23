@@ -1,4 +1,4 @@
-model = "gpt-5.3-codex"
+model = "gpt-5.4"
 model_verbosity = "medium" # 詳細な応答の冗長さ（情報量の多さ）
 sandbox_mode = "read-only" # 最も安全（必要時のみ緩める）
 
@@ -10,18 +10,22 @@ sandbox_mode = "read-only" # 最も安全（必要時のみ緩める）
 approval_policy = "untrusted"
 
 file_opener = "vscode"
-notify = ["bash", "-lc", "afplay /System/Library/Sounds/Ping.aiff"]
+notify = ["bash", "-lc", "\"$HOME/.config/tmux/send_user_notification.sh\" \"Codex Update\" \"Codex finished a turn or needs your attention\" \"codex\""]
 
 # trueにすると、npmのインストールや外部APIへのリクエストが可能 (デフォルトは false)
 network_access = true
 web_search = "live"
 personality = "pragmatic"
+model_reasoning_effort = "medium"
 
 [tui]
 # デスクトップ通知に関する設定
 # - "agent-turn-complete": エージェントの１ターン処理が完了した際に通知
 # - "approval-requested": ユーザーの操作や承認が必要な時に通知
 notifications = ["agent-turn-complete", "approval-requested"]
+
+[tui.model_availability_nux]
+"gpt-5.3-codex-spark" = 1
 
 [shell_environment_policy]
 inherit = "core"
@@ -30,3 +34,6 @@ exclude = ["AWS_*", "AZURE_*", "GOOGLE_", "*TOKEN*", "*SECRET*", "*KEY*"]
 
 [notice.model_migrations]
 "gpt-5.2-codex" = "gpt-5.3-codex"
+
+[projects."/Users/daiki/dotfiles"]
+trust_level = "trusted"
