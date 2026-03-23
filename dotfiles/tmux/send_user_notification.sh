@@ -16,6 +16,8 @@ set -euo pipefail
 title="${1:-TMUX Notification}"
 body="${2:-Event detected}"
 subtitle="${3:-tmux}"
+notification_title="${title}"
+notification_body="${body}"
 log_file="${HOME}/.cache/tmux-notify.log"
 fallback_log_file="/tmp/tmux-notify.log"
 tmp_err="$(mktemp /tmp/tmux-notify.XXXXXX 2>/dev/null || true)"
@@ -35,6 +37,8 @@ cleanup() {
 trap cleanup EXIT
 
 delivered=0
+tmux_display_duration_ms="${TMUX_NOTIFY_DURATION_MS:-5000}"
+tmux_context=""
 
 # AppleScript文字列に埋め込めるよう最小限のエスケープを行う。
 escape_applescript_string() {
@@ -152,7 +156,13 @@ run_osascript_notification() {
 
 if [[ -n "${TMUX:-}" ]] && command -v tmux >/dev/null 2>&1; then
   # GUI通知と独立して tmux 内にもイベントを表示する。
-  tmux display-message "${body}" || true
+  tmux_context="$(tmux display-message -p '#S:#W' 2>/dev/null || true)"
+  if [[ -n "${tmux_context}" ]]; then
+    notification_title="${title} [${tmux_context}]"
+    tmux display-message -d "${tmux_display_duration_ms}" "[${tmux_context}] ${body}" || true
+  else
+    tmux display-message -d "${tmux_display_duration_ms}" "${body}" || true
+  fi
 else
   log_notify "tmux notification unavailable in current context"
 fi
@@ -186,15 +196,15 @@ if ! command -v terminal-notifier >/dev/null 2>&1; then
 else
   log_notify "notification sender resolved: ${resolved_sender} (source=${sender_source}, fallback=${force_osascript_fallback})"
   # Focus との相性が良いことが多い terminal-notifier を先行実行
-  if run_terminal_notifier_notification "${title}" "${body}" "${subtitle}" "${resolved_sender}"; then
+  if run_terminal_notifier_notification "${notification_title}" "${notification_body}" "${subtitle}" "${resolved_sender}"; then
     delivered=1
   fi
 fi
 
 if (( delivered == 0 || force_osascript_fallback == 1 )) && command -v osascript >/dev/null 2>&1; then
   # terminal-notifier が失敗した場合は osascript で最終フォールバック
-  escaped_title="$(escape_applescript_string "${title}")"
-  escaped_body="$(escape_applescript_string "${body}")"
+  escaped_title="$(escape_applescript_string "${notification_title}")"
+  escaped_body="$(escape_applescript_string "${notification_body}")"
   escaped_subtitle="$(escape_applescript_string "${subtitle}")"
   if run_osascript_notification "${escaped_title}" "${escaped_body}" "${escaped_subtitle}"; then
     delivered=1
