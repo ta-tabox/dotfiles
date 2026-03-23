@@ -169,7 +169,7 @@ fi
 
 # 聴覚通知を先に出し、視覚通知失敗時も気づけるようにする。
 if command -v afplay >/dev/null 2>&1; then
-  sound_file="/System/Library/Sounds/Glass.aiff"
+  sound_file="/System/Library/Sounds/Frog.aiff"
   if [[ -f "${sound_file}" ]]; then
     afplay "${sound_file}" >/dev/null 2>&1 &
   else
