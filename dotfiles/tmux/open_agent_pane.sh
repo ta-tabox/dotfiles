@@ -8,7 +8,6 @@ set -euo pipefail
 # - default mode: use @ai_default_agent if valid, otherwise show chooser
 # - choose mode: always show chooser from detected agent CLIs
 # - launch mode: open a pane with a specific agent command
-
 if [[ -z "${TMUX:-}" ]]; then
   echo "This script must be run inside tmux." >&2
   exit 1
@@ -50,6 +49,7 @@ has_command() {
 }
 
 resolve_agent_command() {
+  # ユーザー入力(表示名/実コマンド)を実行コマンドに正規化する。
   local selection="$1"
   local spec
   local name
@@ -67,6 +67,7 @@ resolve_agent_command() {
 }
 
 resolve_agent_name() {
+  # ユーザー入力(表示名/実コマンド)を表示名に正規化する。
   local selection="$1"
   local spec
   local name
@@ -84,6 +85,7 @@ resolve_agent_name() {
 }
 
 tmux_option_value() {
+  # 未設定オプションでもスクリプトを継続できるよう、失敗時は空文字扱いにする。
   local key="$1"
   tmux show-options -gqv "${key}" 2>/dev/null || true
 }
@@ -101,11 +103,13 @@ pane_size="$(trim_spaces "$(tmux_option_value @ai_pane_size)")"
 
 default_agent="$(trim_spaces "${default_agent}")"
 pane_size="$(trim_spaces "${pane_size}")"
+
 if [[ -z "${pane_size}" ]]; then
   pane_size="60"
 fi
 
 open_agent_pane() {
+  # pane生成のみを行い、通知は各CLI側の機能へ委譲する。
   local selection="$1"
   local agent
   local display_name
@@ -122,6 +126,7 @@ open_agent_pane() {
 }
 
 show_menu() {
+  # 実行可能なエージェントだけを列挙してメニュー表示する。
   local available_specs=()
   local available_names=()
   local key
@@ -145,6 +150,7 @@ show_menu() {
   if [[ -n "${default_agent}" ]]; then
     default_name="$(resolve_agent_name "${default_agent}")"
     default_command="$(resolve_agent_command "${default_agent}")"
+
     if has_command "${default_command}"; then
       case " ${available_names[*]} " in
         *" ${default_name} "*) ;;
