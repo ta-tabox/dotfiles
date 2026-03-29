@@ -113,6 +113,7 @@ open_agent_pane() {
   local selection="$1"
   local agent
   local display_name
+  local pane_id
 
   agent="$(resolve_agent_command "${selection}")"
   display_name="$(resolve_agent_name "${selection}")"
@@ -122,7 +123,12 @@ open_agent_pane() {
     return 1
   fi
 
-  tmux split-window -h -l "${pane_size}" -c "#{pane_current_path}" "${agent}"
+  pane_id="$(
+    tmux split-window -d -P -F '#{pane_id}' -h -l "${pane_size}" -c "#{pane_current_path}" "${agent}"
+  )"
+
+  tmux set-option -p -t "${pane_id}" @ai_agent_pane "1" >/dev/null
+  tmux select-pane -t "${pane_id}"
 }
 
 show_menu() {

@@ -11,6 +11,7 @@ Description:
   `source <config_path>` を送信します。
   実行元ペインは current_command が一致しない場合でも、コマンド完了後に
   source が実行されるようにキュー投入します。
+  `open_agent_pane.sh` で開いたAIエージェント用ペインは対象外です。
 
 Options:
   -h, --help    このヘルプを表示
@@ -74,8 +75,9 @@ if [[ ! -r "${config_path}" ]]; then
   exit 1
 fi
 
-# 全セッション/全ウィンドウのペインを列挙し、現在動作中コマンドを取得する
-pane_lines="$(tmux list-panes -a -F '#{pane_id} #{pane_current_command}')"
+# 全セッション/全ウィンドウのペインを列挙し、現在動作中コマンドと
+# AIエージェント用ペインの印を取得する
+pane_lines="$(tmux list-panes -a -F '#{pane_id}\t#{pane_current_command}\t#{@ai_agent_pane}')"
 if [[ -z "${pane_lines}" ]]; then
   echo "No tmux panes found."
   exit 0
@@ -93,8 +95,12 @@ skipped_details=""
 
 # current_command が対象シェルのペインだけに source を送信する
 # vim など他プロセスが前面のペインはここで自動的にスキップされる
-while IFS=' ' read -r pane_id pane_cmd; do
-  if [[ "${pane_cmd}" == "${shell_name}" ]]; then
+while IFS=$'\t' read -r pane_id pane_cmd is_ai_agent_pane; do
+  if [[ "${is_ai_agent_pane:-0}" == "1" ]]; then
+    pane_cmd="${pane_cmd:-unknown}"
+    skipped_details+="- ${pane_id}: ${pane_cmd} (ai-agent)"$'\n'
+    skipped=$((skipped + 1))
+  elif [[ "${pane_cmd}" == "${shell_name}" ]]; then
     tmux send-keys -t "${pane_id}" "${reload_cmd}" C-m
     reloaded=$((reloaded + 1))
   # 実行元ペインは、スクリプト実行中に current_command が bash になりやすい。
