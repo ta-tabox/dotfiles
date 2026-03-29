@@ -45,6 +45,8 @@ typeset -g __cmd_notify_last_cmd=''
 __cmd_notify_extract_cmd() {
   local raw="$1"
   local -a words
+  local -a cmd_words
+  local seen_cmd=0
   local w
 
   raw="${raw#"${raw%%[![:space:]]*}"}"
@@ -58,16 +60,28 @@ __cmd_notify_extract_cmd() {
       [A-Za-z_][A-Za-z0-9_]*=*) continue ;;
       sudo|env|command|builtin|nocorrect|noglob|time|nohup) continue ;;
       --) continue ;;
-      -*) continue ;;
+      -*)
+        if (( ! seen_cmd )); then
+          continue
+        fi
+        cmd_words+=("${w}")
+        ;;
       *)
-        w="${w:t}"
-        printf '%s' "${w:l}"
-        return 0
+        if (( seen_cmd )); then
+          cmd_words+=("${w}")
+        else
+          cmd_words+=("${w:t}")
+          seen_cmd=1
+        fi
         ;;
     esac
   done
 
-  return 1
+  if (( ${#cmd_words[@]} == 0 )); then
+    return 1
+  fi
+
+  printf '%s' "${(L)${(j: :)cmd_words}}"
 }
 
 __cmd_notify_should_skip() {
@@ -75,7 +89,8 @@ __cmd_notify_should_skip() {
   local ignored
 
   for ignored in "${COMMAND_DONE_NOTIFY_IGNORE[@]}"; do
-    if [[ "${cmd}" == "${ignored:l}" ]]; then
+    ignored="${ignored:l}"
+    if [[ "${cmd}" == "${ignored}" || "${cmd}" == "${ignored}"\ * ]]; then
       return 0
     fi
   done

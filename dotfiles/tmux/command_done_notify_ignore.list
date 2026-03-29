@@ -1,5 +1,6 @@
 # command_done_notify default ignore commands
 # 空行と `#` で始まる行は無視される
+# `npm run start` のような複数語コマンドも指定可能
 
 # Editors / pagers
 vim
@@ -16,6 +17,7 @@ top
 htop
 btop
 watch
+npm run start
 
 # Remote / multiplexer
 tmux

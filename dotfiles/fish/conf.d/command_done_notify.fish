@@ -48,6 +48,8 @@ function __cmd_notify_extract_cmd --argument-names raw
     end
 
     set -l words (string split ' ' -- "$raw")
+    set -l cmd_words
+    set -l seen_cmd 0
     for w in $words
         if string match -rq '^[A-Za-z_][A-Za-z0-9_]*=' -- "$w"
             continue
@@ -59,20 +61,34 @@ function __cmd_notify_extract_cmd --argument-names raw
             case '--'
                 continue
             case '-*'
-                continue
+                if test $seen_cmd -eq 0
+                    continue
+                end
+                set -a cmd_words "$w"
             case '*'
-                set w (path basename "$w")
-                echo (string lower -- "$w")
-                return 0
+                if test $seen_cmd -eq 0
+                    set -a cmd_words (path basename "$w")
+                    set seen_cmd 1
+                else
+                    set -a cmd_words "$w"
+                end
         end
     end
 
-    return 1
+    if test (count $cmd_words) -eq 0
+        return 1
+    end
+
+    echo (string lower -- (string join ' ' -- $cmd_words))
 end
 
 function __cmd_notify_should_skip --argument-names cmd
     for ignored in $COMMAND_DONE_NOTIFY_IGNORE
-        if test "$cmd" = (string lower -- "$ignored")
+        set -l ignored_lc (string lower -- "$ignored")
+        if test "$cmd" = "$ignored_lc"
+            return 0
+        end
+        if string match -q -- "$ignored_lc *" "$cmd"
             return 0
         end
     end
