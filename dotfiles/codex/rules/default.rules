@@ -1,0 +1,318 @@
+# Block access to secret-bearing files and directories even in trusted projects.
+# These rules are intentionally more restrictive than the general read allowances.
+
+# forbidden: dotenv files
+prefix_rule(
+    pattern = [["ls", "ll", "la", "tree", "find", "fd", "rg", "sed", "cat", "head", "tail", "less", "bat"], ".env"],
+    decision = "forbidden",
+    justification = "Do not read dotenv files. Use non-secret docs or examples instead.",
+    match = [
+        "cat .env",
+        "sed .env",
+        "rg .env",
+    ],
+    not_match = [
+        "cat README.md",
+    ],
+)
+
+# forbidden: dotenv files with explicit relative path
+prefix_rule(
+    pattern = [["ls", "ll", "la", "tree", "find", "fd", "rg", "sed", "cat", "head", "tail", "less", "bat"], "./.env"],
+    decision = "forbidden",
+    justification = "Do not read dotenv files. Use non-secret docs or examples instead.",
+    match = [
+        "cat ./.env",
+        "sed ./.env",
+    ],
+)
+
+# forbidden: secrets directory
+prefix_rule(
+    pattern = [["ls", "ll", "la", "tree", "find", "fd", "rg", "sed", "cat", "head", "tail", "less", "bat"], "secrets"],
+    decision = "forbidden",
+    justification = "Do not read files under secrets/. Use redacted fixtures or documented examples instead.",
+    match = [
+        "ls secrets",
+        "find secrets",
+        "cat secrets",
+    ],
+)
+
+# forbidden: secrets directory with explicit relative path
+prefix_rule(
+    pattern = [["ls", "ll", "la", "tree", "find", "fd", "rg", "sed", "cat", "head", "tail", "less", "bat"], "./secrets"],
+    decision = "forbidden",
+    justification = "Do not read files under secrets/. Use redacted fixtures or documented examples instead.",
+    match = [
+        "ls ./secrets",
+        "find ./secrets",
+    ],
+)
+
+# forbidden: common secret directories
+prefix_rule(
+    pattern = [["ls", "ll", "la", "tree", "find", "fd", "rg", "sed", "cat", "head", "tail", "less", "bat"], ["credentials", "envs", "private", "certs", "keys", "vault", ".ssh", ".gnupg", ".aws", ".kube", ".pki"]],
+    decision = "forbidden",
+    justification = "Do not read common secret directories. Use sanitized fixtures or documented examples instead.",
+    match = [
+        "ls credentials",
+        "find envs",
+        "cat .ssh",
+    ],
+)
+
+# forbidden: common secret directories with explicit relative path
+prefix_rule(
+    pattern = [["ls", "ll", "la", "tree", "find", "fd", "rg", "sed", "cat", "head", "tail", "less", "bat"], ["./credentials", "./envs", "./private", "./certs", "./keys", "./vault", "./.ssh", "./.gnupg", "./.aws", "./.kube", "./.pki"]],
+    decision = "forbidden",
+    justification = "Do not read common secret directories. Use sanitized fixtures or documented examples instead.",
+    match = [
+        "ls ./credentials",
+        "find ./envs",
+        "cat ./.ssh",
+    ],
+)
+
+# allow: VCS metadata inspection
+prefix_rule(
+    pattern = ["git", ["status", "diff", "log", "show", "branch", "remote", "rev-parse", "ls-files"]],
+    decision = "allow",
+    justification = "Git metadata inspection is safe to run without approval.",
+)
+
+# allow: GitHub CLI inspection
+prefix_rule(
+    pattern = ["gh", "repo", "view"],
+    decision = "allow",
+    justification = "Repository metadata inspection is safe to run without approval.",
+)
+
+prefix_rule(
+    pattern = ["gh", "pr", ["view", "list", "status"]],
+    decision = "allow",
+    justification = "PR metadata inspection is safe to run without approval.",
+)
+
+prefix_rule(
+    pattern = ["gh", "issue", ["view", "list", "status"]],
+    decision = "allow",
+    justification = "Issue metadata inspection is safe to run without approval.",
+)
+
+# allow: package metadata inspection
+prefix_rule(
+    pattern = ["npm", ["view", "info", "ls", "list", "outdated", "--version"]],
+    decision = "allow",
+    justification = "Package metadata inspection is safe to run without approval.",
+)
+
+prefix_rule(
+    pattern = ["pnpm", ["view", "info", "ls", "list", "why", "outdated", "-v", "--version"]],
+    decision = "allow",
+    justification = "Package metadata inspection is safe to run without approval.",
+)
+
+prefix_rule(
+    pattern = ["yarn", ["info", "why", "list", "--version"]],
+    decision = "allow",
+    justification = "Package metadata inspection is safe to run without approval.",
+)
+
+prefix_rule(
+    pattern = ["pip", ["show", "list", "freeze", "--version"]],
+    decision = "allow",
+    justification = "Python package metadata inspection is safe to run without approval.",
+)
+
+# allow: Python test execution
+prefix_rule(
+    pattern = ["pytest"],
+    decision = "allow",
+    justification = "Running Python test suites is safe to run without approval.",
+)
+
+prefix_rule(
+    pattern = ["python", "-m", "pytest"],
+    decision = "allow",
+    justification = "Running Python test suites is safe to run without approval.",
+)
+
+prefix_rule(
+    pattern = ["python3", "-m", "pytest"],
+    decision = "allow",
+    justification = "Running Python test suites is safe to run without approval.",
+)
+
+prefix_rule(
+    pattern = ["uv", "run", "pytest"],
+    decision = "allow",
+    justification = "Running Python test suites is safe to run without approval.",
+)
+
+prefix_rule(
+    pattern = ["poetry", "run", "pytest"],
+    decision = "allow",
+    justification = "Running Python test suites is safe to run without approval.",
+)
+
+# allow: JavaScript test execution
+prefix_rule(
+    pattern = [["npm", "pnpm", "yarn"], "test"],
+    decision = "allow",
+    justification = "Running JavaScript test suites is safe to run without approval.",
+)
+
+prefix_rule(
+    pattern = [["npm", "pnpm", "yarn"], "run", ["test", "test:unit", "test:integration", "test:e2e", "test:ci"]],
+    decision = "allow",
+    justification = "Running JavaScript test suites is safe to run without approval.",
+)
+
+prefix_rule(
+    pattern = [["npm", "pnpm", "yarn"], "run", ["test:watch", "test:coverage", "coverage"]],
+    decision = "allow",
+    justification = "Running JavaScript test watcher and coverage tasks is safe to run without approval.",
+)
+
+prefix_rule(
+    pattern = ["npx", ["jest", "vitest"]],
+    decision = "allow",
+    justification = "Running JavaScript test runners is safe to run without approval.",
+)
+
+prefix_rule(
+    pattern = [["pnpm", "bun"], ["jest", "vitest", "test"]],
+    decision = "allow",
+    justification = "Running JavaScript test runners is safe to run without approval.",
+)
+
+prefix_rule(
+    pattern = ["npx", ["jest", "vitest"], ["--watch", "--coverage"]],
+    decision = "allow",
+    justification = "Running JavaScript test watcher and coverage tasks is safe to run without approval.",
+)
+
+prefix_rule(
+    pattern = [["pnpm", "bun"], ["jest", "vitest", "test"], ["--watch", "--coverage"]],
+    decision = "allow",
+    justification = "Running JavaScript test watcher and coverage tasks is safe to run without approval.",
+)
+
+prefix_rule(
+    pattern = ["pytest", ["--cov", "--maxfail", "-k", "-m", "-q", "-x", "-vv", "-v", "-s"]],
+    decision = "allow",
+    justification = "Running Python tests with common test flags is safe to run without approval.",
+)
+
+prefix_rule(
+    pattern = [["python", "python3"], "-m", "pytest", ["--cov", "--maxfail", "-k", "-m", "-q", "-x", "-vv", "-v", "-s"]],
+    decision = "allow",
+    justification = "Running Python tests with common test flags is safe to run without approval.",
+)
+
+prefix_rule(
+    pattern = [["uv", "poetry"], "run", "pytest", ["--cov", "--maxfail", "-k", "-m", "-q", "-x", "-vv", "-v", "-s"]],
+    decision = "allow",
+    justification = "Running Python tests with common test flags is safe to run without approval.",
+)
+
+# allow: Python coverage execution
+prefix_rule(
+    pattern = ["coverage", ["run", "report", "html", "xml"]],
+    decision = "allow",
+    justification = "Running Python coverage commands is safe to run without approval.",
+)
+
+prefix_rule(
+    pattern = [["python", "python3"], "-m", "coverage", ["run", "report", "html", "xml"]],
+    decision = "allow",
+    justification = "Running Python coverage commands is safe to run without approval.",
+)
+
+prefix_rule(
+    pattern = [["uv", "poetry"], "run", "coverage", ["run", "report", "html", "xml"]],
+    decision = "allow",
+    justification = "Running Python coverage commands is safe to run without approval.",
+)
+
+# allow: Playwright test execution
+prefix_rule(
+    pattern = ["playwright", "test"],
+    decision = "allow",
+    justification = "Running Playwright test suites is safe to run without approval.",
+)
+
+prefix_rule(
+    pattern = ["npx", "playwright", "test"],
+    decision = "allow",
+    justification = "Running Playwright test suites is safe to run without approval.",
+)
+
+prefix_rule(
+    pattern = [["pnpm", "yarn", "bun"], "playwright", "test"],
+    decision = "allow",
+    justification = "Running Playwright test suites is safe to run without approval.",
+)
+
+prefix_rule(
+    pattern = [["npm", "pnpm", "yarn"], "run", ["playwright", "test:playwright", "e2e", "test:e2e"]],
+    decision = "allow",
+    justification = "Running Playwright and browser E2E suites is safe to run without approval.",
+)
+
+# allow: common tool version and help output
+prefix_rule(
+    pattern = [["node", "npm", "pnpm", "yarn", "python", "python3", "ruby", "go", "rustc", "cargo", "bun", "uv", "poetry", "docker", "docker-compose", "kubectl", "brew", "gh", "git", "tmux", "fish", "zsh", "bash"], ["-v", "-V", "--version", "version", "help", "--help"]],
+    decision = "allow",
+    justification = "Version and help output are safe to run without approval.",
+)
+
+# allow: validation, diagnostics, and local policy inspection
+prefix_rule(
+    pattern = ["shellcheck"],
+    decision = "allow",
+    justification = "Shell script static analysis is safe to run without approval.",
+)
+
+prefix_rule(
+    pattern = [["bash", "zsh", "fish"], "-n"],
+    decision = "allow",
+    justification = "Shell syntax checks are safe to run without approval.",
+)
+
+prefix_rule(
+    pattern = ["sort"],
+    decision = "allow",
+    justification = "Sorting stdin is safe to run without approval.",
+)
+
+prefix_rule(
+    pattern = ["sleep", "20"],
+    decision = "allow",
+    justification = "Short waits are safe to run without approval.",
+)
+
+prefix_rule(
+    pattern = ["test", "-f"],
+    decision = "allow",
+    justification = "File existence checks are safe to run without approval.",
+)
+
+prefix_rule(
+    pattern = ["mise", "exec", "--", ["pnpm", "npm"], ["lint", "typecheck"]],
+    decision = "allow",
+    justification = "Lint and typecheck commands are safe to run without approval.",
+)
+
+prefix_rule(
+    pattern = ["pnpm", ["lint", "typecheck", "test:e2e"]],
+    decision = "allow",
+    justification = "Previously approved validation commands are safe to run without approval.",
+)
+
+prefix_rule(
+    pattern = ["codex", "execpolicy"],
+    decision = "allow",
+    justification = "Local execpolicy inspection is safe to run without approval.",
+)

@@ -61,6 +61,7 @@ claude/keybindings.json   ~/.claude/keybindings.json
 codex/config.toml      ~/.codex/config.toml
 codex/AGENTS.md      ~/.codex/AGENTS.md
 codex/prompts      ~/.codex/prompts
+codex/rules      ~/.codex/rules
 
 # skills
 # open standard agents(codex)

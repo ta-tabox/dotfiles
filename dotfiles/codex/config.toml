@@ -1,6 +1,6 @@
 model = "gpt-5.4"
 model_verbosity = "medium" # 詳細な応答の冗長さ（情報量の多さ）
-sandbox_mode = "read-only" # 最も安全（必要時のみ緩める）
+sandbox_mode = "workspace-write" # 最も安全（必要時のみ緩める）
 
 # コマンド実行を承認するかどうかをプロンプトで確認すべきタイミング
 # - untrusted: 「信頼済み」でないコマンド（危険操作など）は実行前に都度承認を求め
@@ -17,12 +17,15 @@ network_access = true
 web_search = "live"
 personality = "pragmatic"
 model_reasoning_effort = "medium"
+default_permissions = "workspace_guardrails"
 
 [tui]
 # デスクトップ通知に関する設定
 # - "agent-turn-complete": エージェントの１ターン処理が完了した際に通知
 # - "approval-requested": ユーザーの操作や承認が必要な時に通知
 notifications = ["agent-turn-complete", "approval-requested"]
+# 横幅が限られるため、重複しやすい項目は外して主要情報に絞る
+status_line = ["model-with-reasoning", "current-dir", "git-branch", "context-used", "context-remaining", "used-tokens"]
 
 [tui.model_availability_nux]
 "gpt-5.3-codex-spark" = 1
@@ -32,8 +35,41 @@ inherit = "core"
 include_only = ["PATH", "HOME", "USER"]
 exclude = ["AWS_*", "AZURE_*", "GOOGLE_", "*TOKEN*", "*SECRET*", "*KEY*"]
 
+[permissions.workspace_guardrails.filesystem]
+":minimal" = "read"
+
+[permissions.workspace_guardrails.filesystem.":project_roots"]
+"." = "write"
+".env" = "none"
+".env.local" = "none"
+".env.development" = "none"
+".env.production" = "none"
+".env.test" = "none"
+".aws" = "none"
+".gnupg" = "none"
+".kube" = "none"
+".pki" = "none"
+".ssh" = "none"
+"certs" = "none"
+"credentials" = "none"
+"envs" = "none"
+"keys" = "none"
+"private" = "none"
+"secrets" = "none"
+"vault" = "none"
+
 [notice.model_migrations]
 "gpt-5.2-codex" = "gpt-5.3-codex"
 
 [projects."/Users/daiki/dotfiles"]
 trust_level = "trusted"
+
+[mcp_servers.playwright]
+args = ["@playwright/mcp@latest"]
+command = "npx"
+
+[sandbox_workspace_write]
+network_access = true
+
+[plugins."github@openai-curated"]
+enabled = true
