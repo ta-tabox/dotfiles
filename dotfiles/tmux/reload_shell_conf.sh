@@ -76,8 +76,10 @@ if [[ ! -r "${config_path}" ]]; then
 fi
 
 # 全セッション/全ウィンドウのペインを列挙し、現在動作中コマンドと
-# AIエージェント用ペインの印を取得する
-pane_lines="$(tmux list-panes -a -F '#{pane_id}\t#{pane_current_command}\t#{@ai_agent_pane}')"
+# AIエージェント用ペインの印を取得する。
+# tmux format の `\t` はタブ展開されないため、Bash 側で実タブを埋め込む。
+pane_format=$'#{pane_id}\t#{pane_current_command}\t#{@ai_agent_pane}'
+pane_lines="$(tmux list-panes -a -F "${pane_format}")"
 if [[ -z "${pane_lines}" ]]; then
   echo "No tmux panes found."
   exit 0
