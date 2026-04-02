@@ -316,3 +316,14 @@ prefix_rule(
     decision = "allow",
     justification = "Local execpolicy inspection is safe to run without approval.",
 )
+prefix_rule(pattern=["pnpm", "test"], decision="allow")
+prefix_rule(pattern=["pnpm", "format"], decision="allow")
+prefix_rule(pattern=["pnpm", "format:check"], decision="allow")
+prefix_rule(pattern=["gh", "repo", "view"], decision="allow")
+prefix_rule(pattern=["docker", "compose", "exec", "app", "pnpm", "test:e2e"], decision="allow")
+prefix_rule(pattern=["docker", "compose", "ps"], decision="allow")
+prefix_rule(pattern=["docker", "compose", "run", "--rm", "e2e", "pnpm", "test:e2e"], decision="allow")
+prefix_rule(pattern=["docker", "compose", "exec", "app", "pnpm", "typecheck"], decision="allow")
+prefix_rule(pattern=["docker", "compose", "exec", "app", "pnpm", "lint"], decision="allow")
+prefix_rule(pattern=["docker", "compose", "exec", "app", "pnpm", "test"], decision="allow")
+prefix_rule(pattern=["docker", "compose", "exec", "app", "pnpm", "format:check"], decision="allow")
