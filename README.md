@@ -126,6 +126,8 @@ curl -fsSL https://claude.ai/install.sh | bash
 
 `dotfiles/Brewfile` に含まれているため `brew bundle` で導入される。
 
+pnpm global bin は `PNPM_HOME`、package store は `~/.config/pnpm/rc` の `store-dir=${HOME}/.local/share/pnpm/store` で管理する。
+
 ## Python仮想環境
 
 `uv` で管理する。

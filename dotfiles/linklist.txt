@@ -20,6 +20,7 @@ zsh.d      ~/.zsh.d
 
 # fish
 fish      ~/.config/fish
+pnpm/rc   ~/.config/pnpm/rc
 
 # sheldon
 sheldon     ~/.config/sheldon
