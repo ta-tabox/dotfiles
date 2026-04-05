@@ -1,0 +1,16 @@
+#!/bin/sh
+
+for arg in "$@"; do
+  case "$arg" in
+    -delete|-exec|-execdir|-ok|-okdir)
+      echo "agent-find: blocked mutating find primary: $arg" >&2
+      exit 64
+      ;;
+  esac
+done
+
+if [ -x /usr/bin/find ]; then
+  exec /usr/bin/find "$@"
+fi
+
+exec find "$@"

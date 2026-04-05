@@ -1,0 +1,17 @@
+#!/bin/sh
+
+for arg in "$@"; do
+  case "$arg" in
+    --pre|--pre=*)
+      echo "agent-rg: blocked rg preprocessor option: $arg" >&2
+      exit 64
+      ;;
+  esac
+done
+
+if command -v rg >/dev/null 2>&1; then
+  exec "$(command -v rg)" "$@"
+fi
+
+echo "agent-rg: rg not found in PATH" >&2
+exit 127

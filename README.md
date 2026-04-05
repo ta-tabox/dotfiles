@@ -106,6 +106,14 @@ tmux設定は `dotfiles/tmux/` 配下で管理している。
 
 `dotfiles/Brewfile` に cask として含まれているため `brew bundle` で導入される。
 
+エージェント用の読み取り専用ラッパーはリポジトリ内の `dotfiles/bin/agent` で管理する。
+
+- `agent-rg`: `rg --pre` を禁止した検索用ラッパー
+- `agent-find`: `find -delete` / `-exec` 系を禁止した列挙用ラッパー
+
+`scripts/link.sh` 実行後に `DOTFILES_ROOT` 環境変数を自動設定し、`~/.local/bin` と `$DOTFILES_ROOT/bin/agent` が PATH に入るよう zsh / fish を設定している。
+`DOTFILES_ROOT` はリンクされたシェル設定ファイルの実体パスから自動で解決するため、リポジトリの配置場所に依存しない。
+
 ## claude code
 
 claude codeはネイティブインストールを公式が推奨している
