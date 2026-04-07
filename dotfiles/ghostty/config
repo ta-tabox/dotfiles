@@ -24,7 +24,7 @@ theme = Dracula+
 # ウィンドウ
 # ========================================
 background = #000000
-background-opacity = 0.4
+background-opacity = 0.65
 background-blur = true
 unfocused-split-opacity = 0.8
 
@@ -63,7 +63,7 @@ mouse-scroll-multiplier = 2
 # パフォーマンス
 # ========================================
 # スクロールバック行数（大量出力に対応）
-scrollback-limit = 10000
+scrollback-limit = 10000000
 
 # ========================================
 # シェル
