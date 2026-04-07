@@ -29,3 +29,12 @@ mosh
 # Git TUIs
 lazygit
 tig
+
+# agents
+codex
+agent
+claude
+aider
+gemini
+opencode
+copilot
