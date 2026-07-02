@@ -15,3 +15,6 @@ export FZF_DEFAULT_COMMAND='fd --type f'
 
 # lazygitの設定パスを変更
 export XDG_CONFIG_HOME="$HOME/.config"
+
+# claude
+export PATH="$HOME/.local/bin:$PATH"
