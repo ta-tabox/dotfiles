@@ -1,6 +1,12 @@
 {
+  "env": {},
+  "includeCoAuthoredBy": false,
   "permissions": {
-    "allow": ["Bash(npm run lint)", "Bash(npm run test:*)", "Read(~/.zshrc)"],
+    "allow": [
+      "Bash(npm run lint)",
+      "Bash(npm run test:*)",
+      "Read(~/.zshrc)"
+    ],
     "deny": [
       "Bash(curl:*)",
       "Read(./.env)",
@@ -8,9 +14,6 @@
       "Read(./secrets/**)"
     ]
   },
-  "env": {
-  },
-  "includeCoAuthoredBy": false,
   "hooks": {
     "Stop": [
       {
@@ -35,5 +38,11 @@
         ]
       }
     ]
-  }
+  },
+  "enabledPlugins": {
+    "skill-creator@claude-plugins-official": true,
+    "github@claude-plugins-official": true,
+    "csharp-lsp@claude-plugins-official": true
+  },
+  "theme": "dark"
 }
