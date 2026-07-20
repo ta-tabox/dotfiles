@@ -17,5 +17,5 @@ customCommands:
     output: terminal
   - command: czg ai
     context: files
-    key: <c-C>
+    key: <c-g>
     output: terminal
