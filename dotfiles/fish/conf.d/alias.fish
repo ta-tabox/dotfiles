@@ -15,6 +15,7 @@ alias view='nvim -R'
 # git
 abbr -a lg lazygit
 abbr -a gcd 'cd (ghq list --full-path | fzf)'
+abbr -a git-gone 'git fetch -p && git branch -vv | awk \'/: gone]/{sub(/^[* +]+/, ""); print $1}\' | xargs git branch -d'
 
 # python
 alias python="python3"
