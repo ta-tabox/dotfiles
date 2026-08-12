@@ -1,5 +1,8 @@
 {
-  "env": {},
+  "env": {
+    "EDITOR": "nvim"
+  },
+  "editorMode": "vim",
   "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
@@ -19,5 +22,6 @@
     "github@claude-plugins-official": true,
     "csharp-lsp@claude-plugins-official": true
   },
-  "theme": "dark"
+  "theme": "dark",
+  "tui": "fullscreen"
 }
