@@ -14,31 +14,6 @@
       "Read(./secrets/**)"
     ]
   },
-  "hooks": {
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.config/tmux/send_user_notification.sh 'Claude Done' 'Claude finished responding' 'claude'",
-            "async": true
-          }
-        ]
-      }
-    ],
-    "Notification": [
-      {
-        "matcher": "permission_prompt|idle_prompt|elicitation_dialog",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.config/tmux/send_user_notification.sh 'Claude Action Needed' 'Claude is waiting for your input' 'claude'",
-            "async": true
-          }
-        ]
-      }
-    ]
-  },
   "enabledPlugins": {
     "skill-creator@claude-plugins-official": true,
     "github@claude-plugins-official": true,
