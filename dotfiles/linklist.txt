@@ -57,6 +57,7 @@ lazygit     ~/.config/lazygit
 claude/settings.json     ~/.claude/settings.json
 claude/CLAUDE.md         ~/.claude/CLAUDE.md
 claude/keybindings.json   ~/.claude/keybindings.json
+claude/statusline-command.sh   ~/.claude/statusline-command.sh
 
 # codex
 codex/config.toml      ~/.codex/config.toml
