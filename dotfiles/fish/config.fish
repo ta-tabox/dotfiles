@@ -45,5 +45,3 @@ if not contains $PNPM_HOME $PATH
     set -gx PATH $PNPM_HOME $PATH
 end
 
-# claude
-set -gx PATH $HOME/.local/bin $PATH
