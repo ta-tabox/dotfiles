@@ -24,17 +24,16 @@ brew "sevenzip" # yazi: アーカイブ展開/プレビュー
 brew "sheldon"
 brew "starship"
 brew "terminal-notifier" # macOS 通知フォールバック（Focus対策）
+brew "tree-sitter-cli" # nvim-treesitter: パーサービルド用CLI
 brew "tmux"
 brew "mise"
 brew "yazi"
-brew "zellij"
 brew "zoxide"
 cask "alacritty"
-cask "codex"
+cask "cmux"
 cask "docker-desktop"
 cask "font-moralerspace"
 cask "font-hackgen-nerd"
 cask "font-symbols-only-nerd-font" # yazi: Nerd Font 記号グリフ
-cask "ghostty"
 cask "obsidian"
 cask "raycast"
