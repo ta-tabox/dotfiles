@@ -8,6 +8,10 @@ return {
         -- default #3b4048
         NonText = { fg = "#6d6860" },
 
+        -- vidual mode slection
+        Visual = { bg = "#525970", fg = "NONE"},
+        VisualNOS = { bg = "#525970", fg = "NONE"},
+
         -- 透過設定を行う場合は以下のフロートの背景も調整する
         -- floating windows
         NormalFloat = { bg = "NONE" },
