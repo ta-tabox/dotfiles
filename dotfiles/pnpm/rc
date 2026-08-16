@@ -1,1 +1,4 @@
 store-dir=${HOME}/.local/share/pnpm/store
+
+# 未指定だと pnpm が PATH から着地先を探すため、シェルごとに配置が割れる。
+global-bin-dir=${HOME}/.local/share/pnpm/bin

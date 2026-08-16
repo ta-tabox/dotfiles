@@ -37,11 +37,3 @@ zoxide init fish | source
 fzf --fish | source
 starship init fish | source
 
-# pnpm global bin
-# miseでpnpmを管理するため、shell側はPNPM_HOMEとPATHだけを持ち、
-# store-dirは ~/.config/pnpm/rc で管理する
-set -gx PNPM_HOME "$HOME/.local/share/pnpm"
-if not contains "$PNPM_HOME/bin" $PATH
-    set -gx PATH "$PNPM_HOME/bin" $PATH
-end
-
