@@ -81,6 +81,9 @@
       "Read(./.env.*)",
       "Read(./secrets/**)",
       "Read(~/.ssh/**)"
+    ],
+    "ask": [
+      "Bash(git push:*)"
     ]
   },
   "statusLine": {
@@ -89,5 +92,7 @@
   },
   "tui": "fullscreen",
   "theme": "dark",
-  "editorMode": "vim"
+  "editorMode": "vim",
+  "outputStyle": "focus",
+  "language": "japanese"
 }
