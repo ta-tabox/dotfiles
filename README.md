@@ -160,7 +160,7 @@ Claude Code の Bash ツールは zsh のスナップショットを経由する
 | --- | --- | --- |
 | `permissions.allow` / `deny` / `ask` | 配列 | 可能。全層の和集合なのでリポジトリ固有のルールを足せる |
 | `theme` / `editorMode` / `tui` / `outputStyle` / `language` | スカラー | 不可 |
-| `env` | オブジェクト | 未検証。マージか置換か確認していない |
+| `env` | オブジェクト | 部分的に可能。キー単位でマージされ、衝突したキーだけ高優先レイヤーが勝つ |
 
 そのため**共有側のスカラーは「全マシン・全リポジトリで固定したいもの」に限る**。
 リポジトリごとに方針が分かれうるキーは共有に書かない。
@@ -168,6 +168,10 @@ Claude Code の Bash ツールは zsh のスナップショットを経由する
 
 `includeCoAuthoredBy` がこれに該当する。
 リポジトリによって Co-Authored-By を付ける方針が分かれるため共有側には置かず、userSettings の個人既定をプロジェクト設定が上書きできる形にしている。
+
+`env` がキー単位のマージであることは実測で確認した。
+projectSettings に `PROJ_ONLY` と `BOTH_KEY`、flagSettings に `FLAG_ONLY` と `BOTH_KEY` を置いて起動したところ、3キーすべてが存在し `BOTH_KEY` だけ flagSettings の値になった。
+共有側の `env.EDITOR` がプロジェクト固有の env を潰す心配はない。
 
 ### 起動経路とラッパーの適用範囲
 
