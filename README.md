@@ -218,11 +218,14 @@ printf '{}\n' > ~/.claude/settings.json
 
 ```json
 {
-  "includeCoAuthoredBy": true,
+  "includeCoAuthoredBy": false,
   "outputStyle": "focus",
   "language": "japanese"
 }
 ```
+
+`includeCoAuthoredBy` は共有側と同じ値だが、アプリでは共有側が効かないため userSettings にも要る。
+このマシンだけ挙動を変えたい場合は、ここの値を共有側と変えればよい。
 
 手順3はデスクトップアプリしか使わない場合でも必要。むしろそちらでは autoMode が唯一の判断材料になる。
 
