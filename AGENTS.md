@@ -25,6 +25,9 @@ AIエージェントはこのファイルを最初に読み、以下の前提で
   - `scripts/common.sh`: `__ln` / `__unlink` / `__mkdir` ヘルパー。
 - `README.md`: セットアップ手順と運用メモ。
 - `CLI_TOOLS.md`: 導入候補CLIのメモ（Brewfile未反映候補）。
+- `CLAUDE.md`: このファイルへの橋渡し。Claude Code は `AGENTS.md` を
+  自動では読まないため、`@AGENTS.md` で取り込んでいる。内容はこちらに集約し、
+  `CLAUDE.md` 側には書かない。
 
 ## セットアップとリンク運用
 
@@ -65,7 +68,8 @@ AIエージェントはこのファイルを最初に読み、以下の前提で
   - `dotfiles/codex/AGENTS.md`
   - `dotfiles/codex/prompts/`
   - `dotfiles/claude/settings.shared.json`（共有設定。`~/.claude/settings.json` はリンクせずマシンローカル）
-  - `dotfiles/claude/CLAUDE.md`
+  - `dotfiles/claude/user-CLAUDE.md`（`~/.claude/CLAUDE.md` にリンク。
+    リポジトリルートの `CLAUDE.md` と別物なので名前を分けている）
   - `dotfiles/agents/skills/`（エージェント共通スキルの枠。中身は追跡しない）
 
 ## Brewfile方針
