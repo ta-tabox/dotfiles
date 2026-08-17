@@ -1,7 +1,7 @@
 # AGENTS.md
 
-このリポジトリは、複数環境で共有するための `dotfiles` 管理用です。
-AIエージェントはこのファイルを最初に読み、以下の前提で作業してください。
+このリポジトリは、複数環境で共有するための `dotfiles` 管理用である。
+AIエージェントはこのファイルを最初に読み、以下の前提で作業する。
 
 ## 応答ルール
 
@@ -25,9 +25,7 @@ AIエージェントはこのファイルを最初に読み、以下の前提で
   - `scripts/common.sh`: `__ln` / `__unlink` / `__mkdir` ヘルパー。
 - `README.md`: セットアップ手順と運用メモ。
 - `CLI_TOOLS.md`: 導入候補CLIのメモ（Brewfile未反映候補）。
-- `CLAUDE.md`: このファイルへの橋渡し。Claude Code は `AGENTS.md` を
-  自動では読まないため、`@AGENTS.md` で取り込んでいる。内容はこちらに集約し、
-  `CLAUDE.md` 側には書かない。
+- `CLAUDE.md`: このファイルへの橋渡し。Claude Code は `AGENTS.md` を自動では読まないため、`@AGENTS.md` で取り込んでいる。内容はこちらに集約し、`CLAUDE.md` 側には書かない。
 
 ## セットアップとリンク運用
 
@@ -68,8 +66,7 @@ AIエージェントはこのファイルを最初に読み、以下の前提で
   - `dotfiles/codex/AGENTS.md`
   - `dotfiles/codex/prompts/`
   - `dotfiles/claude/settings.shared.json`（共有設定。`~/.claude/settings.json` はリンクせずマシンローカル）
-  - `dotfiles/claude/user-CLAUDE.md`（`~/.claude/CLAUDE.md` にリンク。
-    リポジトリルートの `CLAUDE.md` と別物なので名前を分けている）
+  - `dotfiles/claude/user-CLAUDE.md`（`~/.claude/CLAUDE.md` にリンク。リポジトリルートの `CLAUDE.md` と別物なので名前を分けている）
   - `dotfiles/agents/skills/`（エージェント共通スキルの枠。中身は追跡しない）
 
 ## Brewfile方針
@@ -94,5 +91,5 @@ AIエージェントはこのファイルを最初に読み、以下の前提で
 
 ## 補足
 
-- このファイルは「このリポジトリを初見で扱うAIエージェント向けの索引」です。
+- このファイルは「このリポジトリを初見で扱うAIエージェント向けの索引」である。
 - 詳細な値やキーバインドは各設定ファイルを直接参照すること。
