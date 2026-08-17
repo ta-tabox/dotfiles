@@ -64,7 +64,7 @@ AIエージェントはこのファイルを最初に読み、以下の前提で
   - `dotfiles/codex/config.toml`
   - `dotfiles/codex/AGENTS.md`
   - `dotfiles/codex/prompts/`
-  - `dotfiles/claude/settings.json`
+  - `dotfiles/claude/settings.shared.json`（共有設定。`~/.claude/settings.json` はリンクせずマシンローカル）
   - `dotfiles/claude/CLAUDE.md`
 
 ## Brewfile方針

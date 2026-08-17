@@ -157,6 +157,46 @@ zsh のスナップショットを経由するので、zsh 関数はツール内
   つまり**共有側の `deny` はローカルの `allow` では外せない**（外れないガードレール）
 - `autoMode` は userSettings / flagSettings / policySettings からのみ読まれる
 
+### 起動経路とラッパーの適用範囲
+
+**ラッパーが効くのはターミナルから `claude` を起動した場合だけ。**
+Claude Desktop アプリはエージェントをアプリ内の node サービスで動かしており、
+対話シェル経由で `claude` を起動しない（`ps` を見ても `claude` CLI のプロセスが存在しない）。
+そのため fish / zsh 関数は呼ばれず、**flagSettings の共有設定は読まれない**。
+
+| 起動経路 | userSettings（ローカル） | flagSettings（共有） |
+| --- | --- | --- |
+| ターミナルから `claude` | ✅ | ✅ |
+| Claude Desktop アプリ | ✅ | ❌ |
+
+確認方法は、共有側で deny しているコマンドを実行してみるのが早い。
+
+```sh
+rg --version   # 共有レイヤーが効いていれば拒否される
+```
+
+### 権限判断の主体
+
+上記の非対称性があるため、**権限の判断は `permissions` ではなく `autoMode` に寄せる**。
+`autoMode` は userSettings に置かれ、これはどの起動経路でも読まれる層だからである。
+
+| 層 | 中身 | 役割 |
+| --- | --- | --- |
+| ローカル userSettings | `autoMode` | 権限判断の主体。全経路で効く |
+| 共有 flagSettings | `permissions.allow` | ターミナルでのプロンプト削減。効かなくても危険側に倒れない |
+
+`allow` リストは安全のためではなく確認回数を減らすためのものなので、
+デスクトップアプリで効かなくても失われるのは手数だけになる。
+
+`autoMode` のデフォルト environment には「認証情報・個人データ・機密を含むあらゆるファイル」
+というキャッチオールがあるため、`.env` や `~/.ssh` の読み取りは分類器側でカバーされる。
+一方 `Bash(rg:*)` / `Bash(find:*)` の deny は安全性ではなく
+「`agent-rg` / `agent-find` を使う」という運用規約の強制であり、分類器はこれを知らない。
+強制したい場合は `/auto-mode-setup` 後に `autoMode.soft_deny` へ追記する（hard deny より一段緩い）。
+
+**どうしてもアプリ側で効かせたい権限があれば、ローカル設定に重複して書けばよい。**
+userSettings にも `permissions` は書けるので、共有側と二重に持たせれば全経路で効く。
+
 ### 初回セットアップ
 
 ```sh
@@ -166,9 +206,12 @@ printf '{}\n' > ~/.claude/settings.json
 
 # 2. 新しいシェルを開いてラッパーを読み込ませる
 
-# 3. そのマシン固有の autoMode を生成する
+# 3. そのマシン固有の autoMode を生成する（権限判断の主体なので必須）
 #    Claude Code 内で /auto-mode-setup を実行
 ```
+
+手順3はデスクトップアプリしか使わない場合でも必要。むしろそちらでは
+autoMode が唯一の判断材料になる。
 
 `/auto-mode-setup` で生成された内容に特定リポジトリ名が焼き込まれていないか目視で確認する。
 dotfiles は全プロジェクト共通の設定であり、固定値の `autoMode.environment` は
@@ -181,6 +224,11 @@ dotfiles は全プロジェクト共通の設定であり、固定値の `autoMo
 ラッパー（`claude.fish` / `05_claude.zsh`）を変更したら **Claude Code の再起動が必要**。
 Bash ツールが参照するシェルスナップショットはセッション開始時に取得されるため、
 起動中のセッションには反映されない。
+
+`--settings` は UI 上読み取り専用になる。`/permissions` で共有側のルールを編集しようとすると
+「This rule comes from a read-only source」と表示される。
+「常に許可」で追加した権限は必ず userSettings（ローカル）に入るため、
+全マシンで共有したい場合は `settings.shared.json` へ手で移す。
 
 ## mise
 
