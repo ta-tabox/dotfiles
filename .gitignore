@@ -29,3 +29,8 @@ dotfiles/lazygit/state.yml
 # local settings
 *.local.*
 *.local/
+
+# agents skills
+# 枠(ディレクトリ)だけ共有し、スキルの中身は環境依存のため追跡しない
+dotfiles/agents/skills/*
+!dotfiles/agents/skills/README.md

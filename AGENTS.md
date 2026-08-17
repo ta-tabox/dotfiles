@@ -66,6 +66,7 @@ AIエージェントはこのファイルを最初に読み、以下の前提で
   - `dotfiles/codex/prompts/`
   - `dotfiles/claude/settings.shared.json`（共有設定。`~/.claude/settings.json` はリンクせずマシンローカル）
   - `dotfiles/claude/CLAUDE.md`
+  - `dotfiles/agents/skills/`（エージェント共通スキルの枠。中身は追跡しない）
 
 ## Brewfile方針
 
