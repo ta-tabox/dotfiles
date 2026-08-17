@@ -151,6 +151,24 @@ Claude Code の Bash ツールは zsh のスナップショットを経由する
 - 判定は behavior 優先（`deny` > `ask` > `allow`）で、層の優先度は関与しない。つまり**共有側の `deny` はローカルの `allow` では外せない**（外れないガードレール）
 - `autoMode` は userSettings / flagSettings / policySettings からのみ読まれる
 
+### 共有側に書いたスカラーは固定される
+
+レイヤーの優先度は低い順に userSettings < projectSettings < localSettings < flagSettings < policySettings である。
+つまり flagSettings は projectSettings より上にあり、**共有ファイルに書いたスカラー値はプロジェクトの `.claude/settings.json` からも上書きできない**。
+
+| キー | 種類 | プロジェクト側から上書き |
+| --- | --- | --- |
+| `permissions.allow` / `deny` / `ask` | 配列 | 可能。全層の和集合なのでリポジトリ固有のルールを足せる |
+| `theme` / `editorMode` / `tui` / `outputStyle` / `language` | スカラー | 不可 |
+| `env` | オブジェクト | 未検証。マージか置換か確認していない |
+
+そのため**共有側のスカラーは「全マシン・全リポジトリで固定したいもの」に限る**。
+リポジトリごとに方針が分かれうるキーは共有に書かない。
+書かなければ flagSettings は何も主張せず、下の層がそのまま効く。
+
+`includeCoAuthoredBy` がこれに該当する。
+リポジトリによって Co-Authored-By を付ける方針が分かれるため共有側には置かず、userSettings の個人既定をプロジェクト設定が上書きできる形にしている。
+
 ### 起動経路とラッパーの適用範囲
 
 **ラッパーが効くのはターミナルから `claude` を起動した場合だけ。**
@@ -195,7 +213,8 @@ userSettings にも `permissions` は書けるので、共有側と二重に持�
 | キー | アプリでの扱い |
 | --- | --- |
 | `theme` / `editorMode` / `tui` / `statusLine` / `env.EDITOR` | 不要。TUI の見た目とターミナル前提の設定 |
-| `outputStyle` / `language` / `includeCoAuthoredBy` | **要二重化**。応答の口調・言語とコミットの挙動はアプリでも効かせたい |
+| `outputStyle` / `language` | **要二重化**。応答の口調・言語はアプリでも効かせたい |
+| `includeCoAuthoredBy` | 共有側に無いので二重化ではなく userSettings が唯一の置き場になる |
 | `permissions` | 二重化しない。片方だけ更新したときに気づけないため、アプリ側は autoMode に委ねる |
 
 スカラー値なので、両層に同じ値があっても衝突しない。
@@ -214,18 +233,19 @@ printf '{}\n' > ~/.claude/settings.json
 #    Claude Code 内で /auto-mode-setup を実行
 ```
 
-デスクトップアプリも使う場合は、手順1で作った `~/.claude/settings.json` に二重化対象のキーを入れておく。
+手順1で作った `~/.claude/settings.json` には以下を入れておく。
 
 ```json
 {
-  "includeCoAuthoredBy": false,
+  "includeCoAuthoredBy": true,
   "outputStyle": "focus",
   "language": "japanese"
 }
 ```
 
-`includeCoAuthoredBy` は共有側と同じ値だが、アプリでは共有側が効かないため userSettings にも要る。
-このマシンだけ挙動を変えたい場合は、ここの値を共有側と変えればよい。
+`outputStyle` と `language` はデスクトップアプリ用の二重化である。
+`includeCoAuthoredBy` は共有側に置いていないため、ここが個人既定の唯一の置き場になる。
+方針のあるリポジトリでは `.claude/settings.json` 側が勝つ。
 
 手順3はデスクトップアプリしか使わない場合でも必要。むしろそちらでは autoMode が唯一の判断材料になる。
 

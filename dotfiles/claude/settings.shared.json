@@ -2,7 +2,6 @@
   "env": {
     "EDITOR": "nvim"
   },
-  "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
       "Bash(agent-rg:*)",
