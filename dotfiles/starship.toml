@@ -63,6 +63,7 @@ style = "purple"
 
 [git_status]
 style = "purple"
+use_git_executable = true
 
 [git_metrics]
 disabled = false
@@ -174,3 +175,4 @@ symbol = " "
 
 [scala]
 symbol = " "
+
