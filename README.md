@@ -187,6 +187,20 @@ rg --version   # 共有レイヤーが効いていれば拒否される
 **どうしてもアプリ側で効かせたい権限があれば、ローカル設定に重複して書けばよい。**
 userSettings にも `permissions` は書けるので、共有側と二重に持たせれば全経路で効く。
 
+### アプリでも効かせたい設定の二重化
+
+共有ファイルのキーはデスクトップアプリでは1つも効かない。
+ただし大半は TUI 前提の設定で、アプリには自前の UI があるため気にしなくてよい。
+
+| キー | アプリでの扱い |
+| --- | --- |
+| `theme` / `editorMode` / `tui` / `statusLine` / `env.EDITOR` | 不要。TUI の見た目とターミナル前提の設定 |
+| `outputStyle` / `language` / `includeCoAuthoredBy` | **要二重化**。応答の口調・言語とコミットの挙動はアプリでも効かせたい |
+| `permissions` | 二重化しない。片方だけ更新したときに気づけないため、アプリ側は autoMode に委ねる |
+
+スカラー値なので、両層に同じ値があっても衝突しない。
+ドリフトしても実害がないキーだけを二重化の対象にしている。
+
 ### 初回セットアップ
 
 ```sh
@@ -198,6 +212,16 @@ printf '{}\n' > ~/.claude/settings.json
 
 # 3. そのマシン固有の autoMode を生成する（権限判断の主体なので必須）
 #    Claude Code 内で /auto-mode-setup を実行
+```
+
+デスクトップアプリも使う場合は、手順1で作った `~/.claude/settings.json` に二重化対象のキーを入れておく。
+
+```json
+{
+  "includeCoAuthoredBy": true,
+  "outputStyle": "focus",
+  "language": "japanese"
+}
 ```
 
 手順3はデスクトップアプリしか使わない場合でも必要。むしろそちらでは autoMode が唯一の判断材料になる。
