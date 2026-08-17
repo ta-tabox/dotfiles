@@ -54,7 +54,8 @@ bat         ~/.config/bat
 lazygit     ~/.config/lazygit
 
 # claude Code
-claude/settings.json     ~/.claude/settings.json
+# settings.json はマシンローカル設定のため実ファイル(リンクしない)
+# 共有設定は claude/settings.shared.json をラッパーが --settings で渡す
 claude/CLAUDE.md         ~/.claude/CLAUDE.md
 claude/keybindings.json   ~/.claude/keybindings.json
 claude/statusline-command.sh   ~/.claude/statusline-command.sh

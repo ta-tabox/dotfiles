@@ -122,6 +122,66 @@ claude codeはネイティブインストールを公式が推奨している
 curl -fsSL https://claude.ai/install.sh | bash
 ```
 
+### 設定の2層構成
+
+Claude 自身による設定の書き込み（`/config`、「常に許可」、`/auto-mode-setup`）は
+**すべて `~/.claude/settings.json`（userSettings）に行く**。
+ここを公開リポジトリへのシンボリックリンクにすると、環境固有の設定がそのまま
+リポジトリへ流れ込むため、共有設定とマシンローカル設定を分離している。
+
+| 層 | 実体 | 用途 |
+| --- | --- | --- |
+| 共有 | `dotfiles/claude/settings.shared.json`（リポジトリ管理） | 全マシン共通。`env` / `permissions` / `statusLine` / `theme` / `editorMode` など |
+| ローカル | `~/.claude/settings.json`（実ファイル、リンクしない） | そのマシン限定。`autoMode` / `enabledPlugins` / `extraKnownMarketplaces` / 通知設定と Claude が書き込んだ設定 |
+
+以下は環境・端末ごとに差が出るため共有しない。
+
+- `enabledPlugins` / `extraKnownMarketplaces` — 導入プラグインはマシンごとに異なる
+- `inputNeededNotifEnabled` / `agentPushNotifEnabled` — `/config` の Notifications
+  （プッシュ通知）。アカウント・端末に紐づくうえ `/config` の書き込み先がローカル層なので、
+  共有側に置くとトグルするたび食い違う
+
+共有設定は `--settings` フラグ（flagSettings）で渡す。シェル関数がラッパーになっている。
+
+- fish: `dotfiles/fish/functions/claude.fish`
+- zsh: `dotfiles/zsh.d/05_claude.zsh`
+
+どちらも `$DOTFILES_ROOT/claude/settings.shared.json` を絶対パスで渡す
+（`--settings` はチルダ展開しないため）。Claude Code の Bash ツールは
+zsh のスナップショットを経由するので、zsh 関数はツール内の `claude` 呼び出しにも効く。
+
+マージ挙動:
+
+- `permissions.allow` / `deny` / `ask` は全層の**和集合**
+- 判定は behavior 優先（`deny` > `ask` > `allow`）で、層の優先度は関与しない。
+  つまり**共有側の `deny` はローカルの `allow` では外せない**（外れないガードレール）
+- `autoMode` は userSettings / flagSettings / policySettings からのみ読まれる
+
+### 初回セットアップ
+
+```sh
+# 1. ~/.claude/settings.json をリンクではなく実ファイルにする
+unlink ~/.claude/settings.json 2>/dev/null
+printf '{}\n' > ~/.claude/settings.json
+
+# 2. 新しいシェルを開いてラッパーを読み込ませる
+
+# 3. そのマシン固有の autoMode を生成する
+#    Claude Code 内で /auto-mode-setup を実行
+```
+
+`/auto-mode-setup` で生成された内容に特定リポジトリ名が焼き込まれていないか目視で確認する。
+dotfiles は全プロジェクト共通の設定であり、固定値の `autoMode.environment` は
+デフォルトの自己適応型判定（public/private の判定など）を壊す。
+
+**共有設定に `autoMode` を入れてはいけない。** 環境固有の内容が全マシンに伝播する。
+
+### 注意
+
+ラッパー（`claude.fish` / `05_claude.zsh`）を変更したら **Claude Code の再起動が必要**。
+Bash ツールが参照するシェルスナップショットはセッション開始時に取得されるため、
+起動中のセッションには反映されない。
+
 ## mise
 
 `dotfiles/Brewfile` に含まれているため `brew bundle` で導入される。
