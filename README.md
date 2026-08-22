@@ -166,8 +166,8 @@ Claude Code の Bash ツールは zsh のスナップショットを経由する
 リポジトリごとに方針が分かれうるキーは共有に書かない。
 書かなければ flagSettings は何も主張せず、下の層がそのまま効く。
 
-`includeCoAuthoredBy` がこれに該当する。
-リポジトリによって Co-Authored-By を付ける方針が分かれるため共有側には置かず、userSettings の個人既定をプロジェクト設定が上書きできる形にしている。
+`attribution`（commit/PRの署名を制御するキー。非推奨の `includeCoAuthoredBy` の後継）がこれに該当する。
+リポジトリによって署名方針が分かれるため共有側には置かず、userSettings の個人既定をプロジェクト設定が上書きできる形にしている。
 
 `env` がキー単位のマージであることは実測で確認した。
 projectSettings に `PROJ_ONLY` と `BOTH_KEY`、flagSettings に `FLAG_ONLY` と `BOTH_KEY` を置いて起動したところ、3キーすべてが存在し `BOTH_KEY` だけ flagSettings の値になった。
@@ -218,7 +218,7 @@ userSettings にも `permissions` は書けるので、共有側と二重に持�
 | --- | --- |
 | `theme` / `editorMode` / `tui` / `statusLine` / `env.EDITOR` | 不要。TUI の見た目とターミナル前提の設定 |
 | `outputStyle` / `language` | **要二重化**。応答の口調・言語はアプリでも効かせたい |
-| `includeCoAuthoredBy` | 共有側に無いので二重化ではなく userSettings が唯一の置き場になる |
+| `attribution` | 共有側に無いので二重化ではなく userSettings が唯一の置き場になる |
 | `permissions` | 二重化しない。片方だけ更新したときに気づけないため、アプリ側は autoMode に委ねる |
 
 スカラー値なので、両層に同じ値があっても衝突しない。
@@ -241,15 +241,21 @@ printf '{}\n' > ~/.claude/settings.json
 
 ```json
 {
-  "includeCoAuthoredBy": true,
+  "attribution": {
+    "commit": "Co-Authored-By: Claude <noreply@anthropic.com>",
+    "pr": ""
+  },
   "outputStyle": "focus",
   "language": "japanese"
 }
 ```
 
 `outputStyle` と `language` はデスクトップアプリ用の二重化である。
-`includeCoAuthoredBy` は共有側に置いていないため、ここが個人既定の唯一の置き場になる。
+`attribution` は共有側に置いていないため、ここが個人既定の唯一の置き場になる。
 方針のあるリポジトリでは `.claude/settings.json` 側が勝つ。
+`attribution.commit` はコミットのトレーラーを固定文言に簡素化し、モデル名（Sonnet 5 / Opus 5 等）を含めない。
+`attribution.pr` は空文字にして PR 本文のフッターを出さない。
+非推奨の `includeCoAuthoredBy` は使わない。
 
 手順3はデスクトップアプリしか使わない場合でも必要。むしろそちらでは autoMode が唯一の判断材料になる。
 
