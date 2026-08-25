@@ -73,16 +73,12 @@
       "Read(~/.zshrc)"
     ],
     "deny": [
-      "Bash(curl:*)",
       "Bash(rg:*)",
       "Bash(find:*)",
       "Read(./.env)",
       "Read(./.env.*)",
       "Read(./secrets/**)",
       "Read(~/.ssh/**)"
-    ],
-    "ask": [
-      "Bash(git push:*)"
     ]
   },
   "statusLine": {
