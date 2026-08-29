@@ -27,3 +27,27 @@ dotfiles/agents/skills  →  ~/.claude/skills
 ```sh
 git add -f dotfiles/agents/skills/<skill-name>
 ```
+
+## 中身の管理
+
+このディレクトリの中身は、**ここにネストした独立の git リポジトリ**で管理する。
+親リポジトリからは `.gitignore` で丸ごと除外されているため、両者は干渉しない。
+
+submodule にはしない。
+submodule は親側にコミットSHAを記録するため、環境ごとに違うはずのスキルが親の履歴に現れてしまう。
+
+リモートを持たせる場合は、**環境ごとに別のprivateリポジトリ**を用意する。
+同一リポジトリのブランチ分けは、mergeやpullの操作一つで両環境が混ざるため採らない。
+
+新しいマシンで枠だけリンクされた状態から復元する手順は次の通り。
+
+```sh
+cd dotfiles/agents/skills
+git init
+echo README.md > .gitignore   # 親が追跡しているので二重管理を避ける
+git remote add origin <この環境用のprivateリポジトリ>
+git fetch origin && git checkout main
+```
+
+なお、上記の `git add -f` で親リポジトリに昇格させる方法と併用すると、同じファイルが二重に追跡される。
+どちらか一方に寄せること。
