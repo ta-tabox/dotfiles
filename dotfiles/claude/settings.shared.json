@@ -88,6 +88,5 @@
   "tui": "fullscreen",
   "theme": "dark",
   "editorMode": "vim",
-  "outputStyle": "focus",
   "language": "japanese"
 }
