@@ -16,6 +16,9 @@ alias view='nvim -R'
 abbr -a lg lazygit
 abbr -a gcd 'cd (ghq list --full-path | fzf)'
 
+# claude code (IDE 連携付き)
+abbr -a cc 'claude --ide'
+
 # python
 alias python="python3"
 alias pip="pip3"
