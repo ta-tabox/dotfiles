@@ -22,6 +22,9 @@ zsh.d      ~/.zsh.d
 fish      ~/.config/fish
 pnpm/rc   ~/.config/pnpm/rc
 
+# mise（新しい版の Python を入れるときに自動で入れ直すパッケージ一覧）
+mise/default-python-packages   ~/.default-python-packages
+
 # sheldon
 sheldon     ~/.config/sheldon
 
