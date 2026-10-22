@@ -47,5 +47,9 @@ opt.breakindent = true
 -- Spell check
 opt.spelllang = { "en", "cjk" }
 
--- pythonのパスを指定
-vim.g.python3_host_prog = "~/.local/share/mise/installs/python/3.14.3/bin/python"
+-- リモートプラグイン用の provider は使わないので無効にする。
+-- 有効のままだと、mise で Node や Python の版を上げるたびに host パッケージの入れ直しが要る。
+vim.g.loaded_node_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
