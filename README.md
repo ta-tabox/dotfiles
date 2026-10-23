@@ -281,3 +281,26 @@ pnpm global bin は `PNPM_HOME`、package store は `~/.config/pnpm/rc` の `sto
 ## Python仮想環境
 
 `uv` で管理する。
+
+## launchd（LaunchAgent）
+
+このリポジトリは LaunchAgent の plist を持たず、Label と定義の在り処の一覧だけを載せる。
+plist はジョブを定義した側の生成物か手書きの写しで、ここへ置くと元の定義と二重管理になり、元を変えたときにこちらが黙って古くなるからである。
+また plist はこのマシン固有の絶対パスを含むので、`link.sh` で全マシンへ一律に配る対象に向かない。
+
+vivarium（`~/vivarium` 配下に並ぶ個人用リポジトリ群）の側で定義している LaunchAgent は次のとおり。
+
+| Label | 何をするか | 起動時刻 | 定義と据え付け手順の在り処 |
+|---|---|---|---|
+| `com.vivarium.routine` | 退避置き場の焼却、`git gc`、一括 push を順に回す | 毎日 23:00 | `~/vivarium/fermentary/tools/routine.sh`（`viv routine plist` が plist を生成する）と `~/vivarium/fermentary/tools/README.md`「ホストの定期実行」節 |
+| `dev.daiki.obsidian-daily` | Obsidian の vault `Brain` にデイリーノートを作る | 毎日 6:00 | `~/vivarium/formicary/kb/20260721-obsidian-cli-daily-note.md`「定期実行（launchd）」節（手書きの plist を本文に載せている） |
+
+登録状態の確認と取り外しは Label を指して叩く（fish）。
+
+```fish
+launchctl print gui/(id -u)/com.vivarium.routine
+launchctl bootout gui/(id -u)/com.vivarium.routine
+```
+
+plist を書き換えたら `bootout` してから `bootstrap` し直す。
+launchd は読み込み済みの定義を持ち続け、ファイルの変更を検知しないからである。
