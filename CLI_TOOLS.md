@@ -20,3 +20,14 @@
 ```bash
 brew install jq yq watchexec hyperfine xh
 ```
+
+## gh拡張（Brewfile管理外）
+
+`gh extension` は dotfiles で管理していないため、新しい環境では手で入れる。
+
+- `github/gh-stack`  
+  スタック型PR（PRを積み重ねる）を扱う。`gh stack init` / `add` / `submit` / `sync` / `view`。
+
+```bash
+gh extension install github/gh-stack
+```
