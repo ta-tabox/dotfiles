@@ -292,7 +292,7 @@ vivarium（`~/vivarium` 配下に並ぶ個人用リポジトリ群）の側で�
 
 | Label | 何をするか | 起動時刻 | 定義と据え付け手順の在り処 |
 |---|---|---|---|
-| `com.vivarium.routine` | 退避置き場の焼却、`git gc`、一括 push を順に回す | 毎日 23:00 | `~/vivarium/fermentary/tools/routine.sh`（`viv routine plist` が plist を生成する）と `~/vivarium/fermentary/tools/README.md`「ホストの定期実行」節 |
+| `com.vivarium.routine` | 退避置き場の焼却、`git gc`、一括 push を順に回す | 毎日 22:30 | `~/vivarium/fermentary/tools/routine.sh`（`viv routine plist` が plist を生成する）と `~/vivarium/fermentary/tools/README.md`「ホストの定期実行」節 |
 | `dev.daiki.obsidian-daily` | Obsidian の vault `Brain` にデイリーノートを作る | 毎日 6:00 | `~/vivarium/formicary/kb/20260721-obsidian-cli-daily-note.md`「定期実行（launchd）」節（手書きの plist を本文に載せている） |
 
 登録状態の確認と取り外しは Label を指して叩く（fish）。
