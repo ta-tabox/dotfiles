@@ -8,6 +8,7 @@ brew "ffmpeg" # yazi: 動画サムネイル生成
 brew "fzf"
 brew "gh"
 brew "ghq"
+brew "git"
 brew "git-delta"
 brew "git-secrets"
 brew "ghostscript" # snacks.image: 画像/PDF関連のレンダリング補助
