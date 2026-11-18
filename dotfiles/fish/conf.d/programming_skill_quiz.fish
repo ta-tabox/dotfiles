@@ -17,6 +17,8 @@
 #   pyq         今日の未解答クイズを開始（雛形生成 → 解答フォルダへ移動 → vim で solution.py）
 #   pyq --id X  特定クイズIDを指定して開始
 #   pyqt        いま取り組み中のクイズをテスト（どこで実行してもOK）
+#   pyqs        時間計測を止める（席を離れるとき・提出するとき。対象の決め方は pyqt と同じ）
+#   pyqr        止めた時間計測を再開する（vim を開いたまま戻るとき）
 #   pyqd        ダッシュボードHTMLを再生成
 # =============================================================
 
@@ -35,5 +37,13 @@ end
 
 function pyqd --description "ダッシュボードを再生成"
     python3 $QUIZ_PROJ/scripts/build_dashboard.py
-    and python3 $QUIZ_PROJ/scripts/build_kb.py
+    and python3 $QUIZ_PROJ/scripts/build_knowledge.py
+end
+
+function pyqs --description "クイズの時間計測を止める(席を離れる・提出する)"
+    python3 $QUIZ_PROJ/scripts/work.py stop $argv
+end
+
+function pyqr --description "止めたクイズの時間計測を再開(vimは開かない)"
+    python3 $QUIZ_PROJ/scripts/work.py resume $argv
 end
